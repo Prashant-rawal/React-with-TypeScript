@@ -2,17 +2,14 @@
 title: "Introduction"
 description: "The introduction to this course."
 keywords:
-  - A course starter
-  - Next.js
+  - A Workshop
+  - TypeScript
   - React
-  - Brian Holt
+  - Prashant Rawal
 ---
 
-Hello! And welcome to the Next.js course starter by [Brian Holt][twitter].
+Hello! And welcome to the Workshop of React with TypeScript
 
-![Cat, dog, and rat logo for the course](./images/BRAND-WHearts.png)
+![react and typescript logo for the course](./images/rt.webp)
 
-This is a course starter specifically made for making online courses and optimized for use with [Frontend Masters][fem].
-
-[twitter]: https://twitter.com/holtbt
-[fem]: https://www.frontendmasters.com
+[linkedin]: https://in.linkedin.com/in/prashant-rawal-12142b117

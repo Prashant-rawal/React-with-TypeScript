@@ -1,18 +1,16 @@
 {
   "author": {
-    "name": "Brian Holt",
-    "company": "Stripe"
+    "name": "Prashant Rawal",
+    "company": "Tridhya Tech"
   },
-  "title": "Next.js Course Starter Kit",
-  "subtitle": "for Frontend Masters",
-  "frontendMastersLink": "https://frontendmasters.com/courses/complete-react-v6/",
+  "title": "React with TypeScript",
+  "subtitle": "for Tridhya Tech",
   "social": {
-    "linkedin": "btholt",
-    "github": "btholt",
-    "twitter": "holtbt"
+    "linkedin": "https://in.linkedin.com/in/prashant-rawal-12142b117",
+    "github": "https://github.com/IAmCuriousDeveloper"
   },
-  "description": "A starter kit for making really amazing courses, optimized for Frontend Masters",
-  "keywords": ["your", "Google", "keywords", "here"],
-  "productionBaseUrl": "/next-course-starter",
+  "description": "A workshop for start using TypeScript with React",
+  "keywords": ["React", "react", "TypeScript", "workshop", "Prashant Rawal"],
+  "productionBaseUrl": "/react-with-typescript",
   "csvPath": "./out/lessons.csv"
 }

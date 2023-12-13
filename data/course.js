@@ -11,9 +11,9 @@ const DEFAULT_CONFIG = {
   description: "A nice course for nice people.",
   keywords: ["a nice course", "for people", "to learn", "nice things"],
   social: {
-    linkedin: "btholt",
-    github: "btholt",
-    twitter: "holtbt",
+    linkedin: "Prashant",
+    github: "Prashant",
+    twitter: "Prashant",
   },
   productionBaseUrl: "/",
 };

@@ -34,8 +34,11 @@ export default function Footer({ twitter, linkedin, github }) {
             <p>Code Samples and Excercises Licensed Under Apache 2.0</p>
             <p>
               Site Designed by{" "}
-              <a href="https://www.alexdanielson.com/">Alex Danielson</a>
+              <a href="https://in.linkedin.com/in/prashant-rawal-12142b117">
+                Prashant Rawal
+              </a>
             </p>
+            <p>Please respect the creator</p>
           </div>
         </li>
       </ul>
