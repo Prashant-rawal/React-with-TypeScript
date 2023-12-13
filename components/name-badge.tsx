@@ -1,5 +1,9 @@
 import React from "react";
 
+// type NameBadgeProps = {
+//   name: string;
+// };
+
 const NameBadge = () => {
   // if (Math.round(Math.random())) return null;
   return (

@@ -15,7 +15,7 @@ const NameBadge = () => {
         <p>My name is…</p>
       </header>
       <div className="badge-body">
-        <p className="badge-name">Steve</p>
+        <p className="badge-name">Prashant Rawal</p>
       </div>
       <footer className="badge-footer" />
     </section>

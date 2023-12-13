@@ -20,11 +20,11 @@ export default function LessonSlug({ post }) {
   const title = post.title
     ? `${post.title} – ${courseInfo.title}`
     : courseInfo.title;
-  const description = post.attributes.description
+  const description = post.attributes?.description
     ? post.attributes.description
     : courseInfo.description;
 
-  const keywords = post.attributes.keywords
+  const keywords = post.attributes?.keywords
     ? post.attributes.keywords
     : courseInfo.keywords;
 
