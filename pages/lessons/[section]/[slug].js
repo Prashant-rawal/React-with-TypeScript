@@ -38,7 +38,7 @@ export default function LessonSlug({ post }) {
         <meta name="og:title" content={title}></meta>
         <meta
           name="og:image"
-          content={`${process.env.BASE_URL}/images/social.jpg`} //scoail share
+          content={`${process.env.BASE_URL}/images/social-share-cover.jpg`} //scoail share
         ></meta>
         <meta name="twitter:card" content="summary_large_image"></meta>
       </Head>
