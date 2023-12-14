@@ -2,7 +2,7 @@ import config from "../course.json";
 
 const DEFAULT_CONFIG = {
   author: {
-    name: "An Author",
+    name: "Prashant Rawal",
     company: "An Author's Company",
   },
   title: "A Superb Course",
