@@ -104,7 +104,7 @@ If you want a custom domain, make sure you uncomment the `fqdn` field in [.githu
 ## npm commands
 
 - `npm run dev` - Next's dev command. Start a local dev server. Note if you have a productionBasePath set in your course.json, your dev server will respect that (so you don't mess up your paths in production.)
-- `npm run build` - Build your site for production. This will still include the Next.js server run time. Use this if you're using something like Vercel to host your site.
+- `npm run build` - Build your site for production. This will still include the Next.js server run time. Use this if you're using something like Vercel to host your site
 - `npm run export` - Builds your site statically, use this if you're going to deploy to GitHub Pages, S3, or somewhere else with no server. This will run next build and then next export (no need to run build yourself first.)
 - `npm run start` - Start an already-built server.
 - `npm run csv` – Will generate the CSV of the metadata from your course. Note you may have to run build first, depending on your csvPath.
