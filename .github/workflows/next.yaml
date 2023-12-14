@@ -22,3 +22,5 @@ jobs:
           # fqdn: sql.holt.courses
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DOTENV_PATH: .env
+        shell: bash -l
