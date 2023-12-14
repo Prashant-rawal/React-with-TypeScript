@@ -82,8 +82,4 @@ Don't worry about all of that ceremony. `useState` is an abstraction over `useRe
 
 If we try to break the rules, you'll see that TypeScript keeps us honest.
 
-![](_attachments/Pasted%20image%2020221107062434.png)
-
 This is _particulary_ helpful when dealing with one of my least favorite parts of the browser: the fact that number inputs store their values as strings. 🙄
-
-Let's take this head on and try to [get that little form for manually setting the count working](useState,%20an%20exercise.md).

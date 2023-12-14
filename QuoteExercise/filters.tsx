@@ -1,11 +1,11 @@
 import React from "react";
 
-type QuoteFilterProps = {
-  filters: QuoteFilters;
-  setFilters: any; // Change me!
-};
+// type QuoteFilterProps = {
+//   filters: QuoteFilters;
+//   setFilters: any; // Change me!
+// };
 
-const QuoteFilter = ({ filters, setFilters }: QuoteFilterProps) => {
+const QuoteFilter = ({ filters, setFilters }: any) => {
   return (
     <section className="flex gap-4">
       <label htmlFor="content-filter">
