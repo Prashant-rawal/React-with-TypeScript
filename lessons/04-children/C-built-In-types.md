@@ -1,4 +1,4 @@
-# **builtIn types**
+# **Built-In types**
 
 <br>
 
@@ -10,6 +10,7 @@
 Let's say you want to extend props for a given React component to take children. You can use `React.PropsWithChildren`.
 
 This might look something like this:
+<br>
 
 ```tsx
 type ButtonProps = React.PropsWithChildren<{

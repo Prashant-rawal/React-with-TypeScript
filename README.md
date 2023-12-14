@@ -101,13 +101,6 @@ By default the GitHub Action looks for a `main` branch, so be sure you're using 
 
 If you want a custom domain, make sure you uncomment the `fqdn` field in [.github/workflows/next.yaml](https://github.com/btholt/next-course-starter/blob/main/.github/workflows/next.yaml) file and put your custom domain. If you don't do that and only set it up with the GitHub web GUI, every deploy will break the custom domain.
 
-## Example Sites
-
-- [This repo itself](https://btholt.github.io/next-course-starter/)
-- [Complete Intro to React v6](https://btholt.github.io/next-react-v6/)
-- [Complete Intro to React v7](https://btholt.github.io/complete-intro-to-react-v7/)
-- [Complete Intro to Web Dev v3](https://btholt.github.io/complete-intro-to-web-dev-v3/)
-
 ## npm commands
 
 - `npm run dev` - Next's dev command. Start a local dev server. Note if you have a productionBasePath set in your course.json, your dev server will respect that (so you don't mess up your paths in production.)
