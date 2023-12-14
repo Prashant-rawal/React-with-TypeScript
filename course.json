@@ -11,6 +11,6 @@
   },
   "description": "A workshop for start using TypeScript with React",
   "keywords": ["React", "react", "TypeScript", "workshop", "Prashant Rawal"],
-  "productionBaseUrl": "/react-with-typescript",
+  "productionBaseUrl": "/React-with-TypeScript",
   "csvPath": "./out/lessons.csv"
 }
