@@ -45,8 +45,6 @@ const Box = ({ children }: PropsWithChildren) => {
 
 What if we wanted to add additional props? We can actually pass `PropsWithChildren` an argument.
 
-<br>
-
 ```tsx
 import React, { PropsWithChildren } from "react";
 
