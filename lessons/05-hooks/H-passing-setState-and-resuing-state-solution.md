@@ -151,5 +151,3 @@ const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
   }));
 };
 ```
-
-Let's talk about another intering benefit we get from [unions](TypeScript's%20unions%20in%20React.md).
