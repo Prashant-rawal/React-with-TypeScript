@@ -198,8 +198,8 @@ header .cta-btn {
 .author .image {
   border-radius: 75px;
   overflow: hidden;
-  height: 75px;
-  width: 75px;
+  height: 130px;
+  width: 130px;
 }
 
 .navbar-brand.navbar-brand a {
@@ -470,8 +470,8 @@ ol.sections-name .lesson-details {
   }
 
   ol.sections-name .lesson-preface {
-    font-size:60px
-   }
+    font-size: 60px;
+  }
 }
 
 .lesson-details h3 {
