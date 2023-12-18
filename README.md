@@ -29,7 +29,7 @@ This json file allows you to configure the details of the site. Update the info 
 - _social.github_ – Your GitHub user name. Optional.
 - _description_ – The description you want to show up in search engine results.
 - _keywords_ – The SEO keywords for this course. An array of strings
-- _productionBaseUrl_ – Typically useful for GitHub Pages. This adds a base path to your project. For GitHub Pages, this will be the name of your repo. For example, this site's base URL is `/next-course-starter` because the production URL for this site is `btholt.github.io/next-course-starer`. Do note this will also make your dev server's base URL this as well so you can catch problems before they go to production.
+- _productionBaseUrl_ – Typically useful for GitHub Pages. This adds a base path to your project. For GitHub Pages, this will be the name of your repo. For example, this site's base URL is `/next-course-starter` .
 - _csvPath_ – A CSV with the meta data for your lessons will be created at this path when you build or export the project. If you delete this config option it will not generate a CSV.
 
 ### styles/variables.css
@@ -98,8 +98,6 @@ By default this repo works with GitHub Pages. Just make sure you set the `produc
 It also includes a GitHub Action to automatically deploy to your gh-pages branch. Just make sure that your repo has GitHub Pages enabled and the branch is set to gh-pages. If you're not deploying to GitHub Pages go ahead and delete the `.github` directory.
 
 By default the GitHub Action looks for a `main` branch, so be sure you're using that instead of `master`.
-
-If you want a custom domain, make sure you uncomment the `fqdn` field in [.github/workflows/next.yaml](https://github.com/btholt/next-course-starter/blob/main/.github/workflows/next.yaml) file and put your custom domain. If you don't do that and only set it up with the GitHub web GUI, every deploy will break the custom domain.
 
 ## npm commands
 

@@ -22,9 +22,11 @@
     "title-case": "^3.0.3"
   },
   "devDependencies": {
+    "@types/node": "20.10.5",
     "@types/react": "^18.2.45",
     "chatgpt": "^5.2.5",
     "convert-array-to-csv": "^2.0.0",
-    "dotenv": "^16.3.1"
+    "dotenv": "^16.3.1",
+    "typescript": "5.3.3"
   }
 }
