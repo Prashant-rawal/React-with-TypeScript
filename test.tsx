@@ -1,34 +1,284 @@
-import React, { PropsWithChildren } from "react";
+// const array = [
+//   {
+//     id: "ThreatHunting",
+//     category: "Threat Hunting",
+//     images: [
+//       {
+//         id: 1,
+//         nodeType: "AUTONOMOUS_SYSTEM",
+//         shape: {
+//           type: "Image",
+//           source:
+//             "https://static-up-assets.s3.eu-north-1.amazonaws.com/Threat%20Hunting/autonomous-system.png?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEEQaCmV1LW5vcnRoLTEiRzBFAiEAgiXHeyDYR3O6aTvcsa%2Be0RAZyTBsIGFACP16%2FnfjnMsCIDPqGCle3Qwi5u6dfSjv76nvivcptFvzwFi8UAF0t26CKsgFCL3%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNTkwMjEyMzA5MzI5Igzg6CNnMpiD8exwbx0qnAVVKz7arsp9WFoMxCF0TLohDelOkRmyzECbbRbdxlUTokCjV1ArqMsCdjbyi21wirV69V%2B6okfZrJUzyhpJmKZ54zCWd2MZ1VzsxXoBaVoAlFT7X7VWanx33INNIkSUj5sp3Y0dw8MTYipD277I%2FnsAwaLKortoCApoYhObDy9YrEVLSYG8s%2FYEfOR%2BO0%2BgQpQYS1AxW%2F5Y6nBFVszWot%2F2ONHc1PjC5Tx52Z4zJZVDC34K0MsICxZzRctMOhKxHUNnzs66Fw6cxfVuSxxxE8CYRWQR8REhayqGfrWOCOyEEHqMv29HNTT0VWLhLsNE%2FYVE9sn4GgjEXAjvYUsy8YJDqyusQDPQmC%2FBTae38Fcc9YxqD9aTtAWBN%2FRNa%2BSbIOCQFGuB16HNEqglyjYc5tsQBdfL03xgCNEHstG32Db9GLMN2lnLZd0yyNxdInbe2zZctF0vOcCoKwHksjFFA7YnU4mUpgbHoPPJ7RZ91SfaP%2BO6yA%2BOvsxzcFwpWJbgFxuBuE1hZ4DSckvJFAZceQNP5bwwzCvFKijKTy9w4gMumQPL7hK2HLOmK7TOlERhk5iyoDRgBboqARLnXsaaiJ%2BoildAOHjf9zw3kOAW%2FPe2pe%2Bd6zrGi1V%2B1kgiQkFe3CXsrpNDW6ciXDRX7cdKSHdLpfWjjgv1uLYmWsjMDwLvGrc6G6Lled2Ttq58s4NlFjqX4MkAcWbGjIPnndPGZkTyLB7%2FamitrT1Nlvk0FbwhD8MZAGsV61lCRXleCtZB8EEjvgLMK0JB2yWBm4MGStfpATeGPT76Y4OkNRpHZv%2FFFMFwFe3Meq9dRqWLPBg0Vd8GvWLyBzyRV%2BzbzQTaQNV3K1lnhnVaGQ4AjM4aSopPpsEXWWndwhT%2FHk8fgzCF7oCsBjqxARFY0vNQFOjmCEAZYPv4%2BU6dikRl8qWH9dtVDq7LGiAE%2BU1vjQ1RXoUmyad%2FX1nAqatm6oZje8NYNb2w92wGIjj2Ww5Ll%2FEKiQPsTdm6Eq1oG8uGoKOmmGDp7vfiBLZZKVTVJGLbumqHQTUjIh0H%2Feyg0l%2FArtWQ2pZbVygjSSHBiY3eXJCg39tv2QJU5yc0na90pCAvwS9s1CGBTHkPkZ2n9AZac8B4ftSTceuTQTizww%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20231218T123553Z&X-Amz-SignedHeaders=host&X-Amz-Credential=ASIAYS23FEFIW4PPJEEP%2F20231218%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Expires=600&X-Amz-Signature=df47bfed9fdc7ecc6a72a268fabb59dd074360ef73817913ea5be8a8c84ab2dc",
+//         },
+//       },
+//       {
+//         id: 2,
+//         nodeType: "CAMPAIGN",
+//         shape: {
+//           type: "Image",
+//           source:
+//             "https://static-up-assets.s3.eu-north-1.amazonaws.com/Threat%20Hunting/campaign.png?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEEQaCmV1LW5vcnRoLTEiRzBFAiEAgiXHeyDYR3O6aTvcsa%2Be0RAZyTBsIGFACP16%2FnfjnMsCIDPqGCle3Qwi5u6dfSjv76nvivcptFvzwFi8UAF0t26CKsgFCL3%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNTkwMjEyMzA5MzI5Igzg6CNnMpiD8exwbx0qnAVVKz7arsp9WFoMxCF0TLohDelOkRmyzECbbRbdxlUTokCjV1ArqMsCdjbyi21wirV69V%2B6okfZrJUzyhpJmKZ54zCWd2MZ1VzsxXoBaVoAlFT7X7VWanx33INNIkSUj5sp3Y0dw8MTYipD277I%2FnsAwaLKortoCApoYhObDy9YrEVLSYG8s%2FYEfOR%2BO0%2BgQpQYS1AxW%2F5Y6nBFVszWot%2F2ONHc1PjC5Tx52Z4zJZVDC34K0MsICxZzRctMOhKxHUNnzs66Fw6cxfVuSxxxE8CYRWQR8REhayqGfrWOCOyEEHqMv29HNTT0VWLhLsNE%2FYVE9sn4GgjEXAjvYUsy8YJDqyusQDPQmC%2FBTae38Fcc9YxqD9aTtAWBN%2FRNa%2BSbIOCQFGuB16HNEqglyjYc5tsQBdfL03xgCNEHstG32Db9GLMN2lnLZd0yyNxdInbe2zZctF0vOcCoKwHksjFFA7YnU4mUpgbHoPPJ7RZ91SfaP%2BO6yA%2BOvsxzcFwpWJbgFxuBuE1hZ4DSckvJFAZceQNP5bwwzCvFKijKTy9w4gMumQPL7hK2HLOmK7TOlERhk5iyoDRgBboqARLnXsaaiJ%2BoildAOHjf9zw3kOAW%2FPe2pe%2Bd6zrGi1V%2B1kgiQkFe3CXsrpNDW6ciXDRX7cdKSHdLpfWjjgv1uLYmWsjMDwLvGrc6G6Lled2Ttq58s4NlFjqX4MkAcWbGjIPnndPGZkTyLB7%2FamitrT1Nlvk0FbwhD8MZAGsV61lCRXleCtZB8EEjvgLMK0JB2yWBm4MGStfpATeGPT76Y4OkNRpHZv%2FFFMFwFe3Meq9dRqWLPBg0Vd8GvWLyBzyRV%2BzbzQTaQNV3K1lnhnVaGQ4AjM4aSopPpsEXWWndwhT%2FHk8fgzCF7oCsBjqxARFY0vNQFOjmCEAZYPv4%2BU6dikRl8qWH9dtVDq7LGiAE%2BU1vjQ1RXoUmyad%2FX1nAqatm6oZje8NYNb2w92wGIjj2Ww5Ll%2FEKiQPsTdm6Eq1oG8uGoKOmmGDp7vfiBLZZKVTVJGLbumqHQTUjIh0H%2Feyg0l%2FArtWQ2pZbVygjSSHBiY3eXJCg39tv2QJU5yc0na90pCAvwS9s1CGBTHkPkZ2n9AZac8B4ftSTceuTQTizww%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20231218T123553Z&X-Amz-SignedHeaders=host&X-Amz-Credential=ASIAYS23FEFIW4PPJEEP%2F20231218%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Expires=600&X-Amz-Signature=eaf45b6678a8f63f45fcf4d0e02b8921bd58e100b45794773c9f9b84fbe7020c",
+//         },
+//       },
+//       {
+//         id: 3,
+//         nodeType: "DOMAIN_NAME",
+//         shape: {
+//           type: "Image",
+//           source:
+//             "https://static-up-assets.s3.eu-north-1.amazonaws.com/Threat%20Hunting/domain.png?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEEQaCmV1LW5vcnRoLTEiRzBFAiEAgiXHeyDYR3O6aTvcsa%2Be0RAZyTBsIGFACP16%2FnfjnMsCIDPqGCle3Qwi5u6dfSjv76nvivcptFvzwFi8UAF0t26CKsgFCL3%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNTkwMjEyMzA5MzI5Igzg6CNnMpiD8exwbx0qnAVVKz7arsp9WFoMxCF0TLohDelOkRmyzECbbRbdxlUTokCjV1ArqMsCdjbyi21wirV69V%2B6okfZrJUzyhpJmKZ54zCWd2MZ1VzsxXoBaVoAlFT7X7VWanx33INNIkSUj5sp3Y0dw8MTYipD277I%2FnsAwaLKortoCApoYhObDy9YrEVLSYG8s%2FYEfOR%2BO0%2BgQpQYS1AxW%2F5Y6nBFVszWot%2F2ONHc1PjC5Tx52Z4zJZVDC34K0MsICxZzRctMOhKxHUNnzs66Fw6cxfVuSxxxE8CYRWQR8REhayqGfrWOCOyEEHqMv29HNTT0VWLhLsNE%2FYVE9sn4GgjEXAjvYUsy8YJDqyusQDPQmC%2FBTae38Fcc9YxqD9aTtAWBN%2FRNa%2BSbIOCQFGuB16HNEqglyjYc5tsQBdfL03xgCNEHstG32Db9GLMN2lnLZd0yyNxdInbe2zZctF0vOcCoKwHksjFFA7YnU4mUpgbHoPPJ7RZ91SfaP%2BO6yA%2BOvsxzcFwpWJbgFxuBuE1hZ4DSckvJFAZceQNP5bwwzCvFKijKTy9w4gMumQPL7hK2HLOmK7TOlERhk5iyoDRgBboqARLnXsaaiJ%2BoildAOHjf9zw3kOAW%2FPe2pe%2Bd6zrGi1V%2B1kgiQkFe3CXsrpNDW6ciXDRX7cdKSHdLpfWjjgv1uLYmWsjMDwLvGrc6G6Lled2Ttq58s4NlFjqX4MkAcWbGjIPnndPGZkTyLB7%2FamitrT1Nlvk0FbwhD8MZAGsV61lCRXleCtZB8EEjvgLMK0JB2yWBm4MGStfpATeGPT76Y4OkNRpHZv%2FFFMFwFe3Meq9dRqWLPBg0Vd8GvWLyBzyRV%2BzbzQTaQNV3K1lnhnVaGQ4AjM4aSopPpsEXWWndwhT%2FHk8fgzCF7oCsBjqxARFY0vNQFOjmCEAZYPv4%2BU6dikRl8qWH9dtVDq7LGiAE%2BU1vjQ1RXoUmyad%2FX1nAqatm6oZje8NYNb2w92wGIjj2Ww5Ll%2FEKiQPsTdm6Eq1oG8uGoKOmmGDp7vfiBLZZKVTVJGLbumqHQTUjIh0H%2Feyg0l%2FArtWQ2pZbVygjSSHBiY3eXJCg39tv2QJU5yc0na90pCAvwS9s1CGBTHkPkZ2n9AZac8B4ftSTceuTQTizww%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20231218T123553Z&X-Amz-SignedHeaders=host&X-Amz-Credential=ASIAYS23FEFIW4PPJEEP%2F20231218%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Expires=600&X-Amz-Signature=d09bc9d426fdd435d04d38c07e94811b90d1139add815e3ccff1b7ccf2b1db17",
+//         },
+//       },
+//       {
+//         id: 4,
+//         nodeType: "IP4_ADDR",
+//         shape: {
+//           type: "Image",
+//           source:
+//             "https://static-up-assets.s3.eu-north-1.amazonaws.com/Threat%20Hunting/ipv4-addr.png?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEEQaCmV1LW5vcnRoLTEiRzBFAiEAgiXHeyDYR3O6aTvcsa%2Be0RAZyTBsIGFACP16%2FnfjnMsCIDPqGCle3Qwi5u6dfSjv76nvivcptFvzwFi8UAF0t26CKsgFCL3%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNTkwMjEyMzA5MzI5Igzg6CNnMpiD8exwbx0qnAVVKz7arsp9WFoMxCF0TLohDelOkRmyzECbbRbdxlUTokCjV1ArqMsCdjbyi21wirV69V%2B6okfZrJUzyhpJmKZ54zCWd2MZ1VzsxXoBaVoAlFT7X7VWanx33INNIkSUj5sp3Y0dw8MTYipD277I%2FnsAwaLKortoCApoYhObDy9YrEVLSYG8s%2FYEfOR%2BO0%2BgQpQYS1AxW%2F5Y6nBFVszWot%2F2ONHc1PjC5Tx52Z4zJZVDC34K0MsICxZzRctMOhKxHUNnzs66Fw6cxfVuSxxxE8CYRWQR8REhayqGfrWOCOyEEHqMv29HNTT0VWLhLsNE%2FYVE9sn4GgjEXAjvYUsy8YJDqyusQDPQmC%2FBTae38Fcc9YxqD9aTtAWBN%2FRNa%2BSbIOCQFGuB16HNEqglyjYc5tsQBdfL03xgCNEHstG32Db9GLMN2lnLZd0yyNxdInbe2zZctF0vOcCoKwHksjFFA7YnU4mUpgbHoPPJ7RZ91SfaP%2BO6yA%2BOvsxzcFwpWJbgFxuBuE1hZ4DSckvJFAZceQNP5bwwzCvFKijKTy9w4gMumQPL7hK2HLOmK7TOlERhk5iyoDRgBboqARLnXsaaiJ%2BoildAOHjf9zw3kOAW%2FPe2pe%2Bd6zrGi1V%2B1kgiQkFe3CXsrpNDW6ciXDRX7cdKSHdLpfWjjgv1uLYmWsjMDwLvGrc6G6Lled2Ttq58s4NlFjqX4MkAcWbGjIPnndPGZkTyLB7%2FamitrT1Nlvk0FbwhD8MZAGsV61lCRXleCtZB8EEjvgLMK0JB2yWBm4MGStfpATeGPT76Y4OkNRpHZv%2FFFMFwFe3Meq9dRqWLPBg0Vd8GvWLyBzyRV%2BzbzQTaQNV3K1lnhnVaGQ4AjM4aSopPpsEXWWndwhT%2FHk8fgzCF7oCsBjqxARFY0vNQFOjmCEAZYPv4%2BU6dikRl8qWH9dtVDq7LGiAE%2BU1vjQ1RXoUmyad%2FX1nAqatm6oZje8NYNb2w92wGIjj2Ww5Ll%2FEKiQPsTdm6Eq1oG8uGoKOmmGDp7vfiBLZZKVTVJGLbumqHQTUjIh0H%2Feyg0l%2FArtWQ2pZbVygjSSHBiY3eXJCg39tv2QJU5yc0na90pCAvwS9s1CGBTHkPkZ2n9AZac8B4ftSTceuTQTizww%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20231218T123553Z&X-Amz-SignedHeaders=host&X-Amz-Credential=ASIAYS23FEFIW4PPJEEP%2F20231218%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Expires=600&X-Amz-Signature=4053610b4a1294dc46c65b0edae18f1ca7da67c6af4f89627ddaa3b91b200722",
+//         },
+//       },
+//       {
+//         id: 5,
+//         nodeType: "IPV6_ADDR",
+//         shape: {
+//           type: "Image",
+//           source:
+//             "https://static-up-assets.s3.eu-north-1.amazonaws.com/Threat%20Hunting/ipv6-addr.png?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEEQaCmV1LW5vcnRoLTEiRzBFAiEAgiXHeyDYR3O6aTvcsa%2Be0RAZyTBsIGFACP16%2FnfjnMsCIDPqGCle3Qwi5u6dfSjv76nvivcptFvzwFi8UAF0t26CKsgFCL3%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNTkwMjEyMzA5MzI5Igzg6CNnMpiD8exwbx0qnAVVKz7arsp9WFoMxCF0TLohDelOkRmyzECbbRbdxlUTokCjV1ArqMsCdjbyi21wirV69V%2B6okfZrJUzyhpJmKZ54zCWd2MZ1VzsxXoBaVoAlFT7X7VWanx33INNIkSUj5sp3Y0dw8MTYipD277I%2FnsAwaLKortoCApoYhObDy9YrEVLSYG8s%2FYEfOR%2BO0%2BgQpQYS1AxW%2F5Y6nBFVszWot%2F2ONHc1PjC5Tx52Z4zJZVDC34K0MsICxZzRctMOhKxHUNnzs66Fw6cxfVuSxxxE8CYRWQR8REhayqGfrWOCOyEEHqMv29HNTT0VWLhLsNE%2FYVE9sn4GgjEXAjvYUsy8YJDqyusQDPQmC%2FBTae38Fcc9YxqD9aTtAWBN%2FRNa%2BSbIOCQFGuB16HNEqglyjYc5tsQBdfL03xgCNEHstG32Db9GLMN2lnLZd0yyNxdInbe2zZctF0vOcCoKwHksjFFA7YnU4mUpgbHoPPJ7RZ91SfaP%2BO6yA%2BOvsxzcFwpWJbgFxuBuE1hZ4DSckvJFAZceQNP5bwwzCvFKijKTy9w4gMumQPL7hK2HLOmK7TOlERhk5iyoDRgBboqARLnXsaaiJ%2BoildAOHjf9zw3kOAW%2FPe2pe%2Bd6zrGi1V%2B1kgiQkFe3CXsrpNDW6ciXDRX7cdKSHdLpfWjjgv1uLYmWsjMDwLvGrc6G6Lled2Ttq58s4NlFjqX4MkAcWbGjIPnndPGZkTyLB7%2FamitrT1Nlvk0FbwhD8MZAGsV61lCRXleCtZB8EEjvgLMK0JB2yWBm4MGStfpATeGPT76Y4OkNRpHZv%2FFFMFwFe3Meq9dRqWLPBg0Vd8GvWLyBzyRV%2BzbzQTaQNV3K1lnhnVaGQ4AjM4aSopPpsEXWWndwhT%2FHk8fgzCF7oCsBjqxARFY0vNQFOjmCEAZYPv4%2BU6dikRl8qWH9dtVDq7LGiAE%2BU1vjQ1RXoUmyad%2FX1nAqatm6oZje8NYNb2w92wGIjj2Ww5Ll%2FEKiQPsTdm6Eq1oG8uGoKOmmGDp7vfiBLZZKVTVJGLbumqHQTUjIh0H%2Feyg0l%2FArtWQ2pZbVygjSSHBiY3eXJCg39tv2QJU5yc0na90pCAvwS9s1CGBTHkPkZ2n9AZac8B4ftSTceuTQTizww%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20231218T123553Z&X-Amz-SignedHeaders=host&X-Amz-Credential=ASIAYS23FEFIW4PPJEEP%2F20231218%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Expires=600&X-Amz-Signature=576f741ffb183e488c47174e668d190e96922324cb7a26c7b9edd17fe8165016",
+//         },
+//       },
+//       {
+//         id: 6,
+//         nodeType: "MALWARE",
+//         shape: {
+//           type: "Image",
+//           source:
+//             "https://static-up-assets.s3.eu-north-1.amazonaws.com/Threat%20Hunting/malware.png?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEEQaCmV1LW5vcnRoLTEiRzBFAiEAgiXHeyDYR3O6aTvcsa%2Be0RAZyTBsIGFACP16%2FnfjnMsCIDPqGCle3Qwi5u6dfSjv76nvivcptFvzwFi8UAF0t26CKsgFCL3%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNTkwMjEyMzA5MzI5Igzg6CNnMpiD8exwbx0qnAVVKz7arsp9WFoMxCF0TLohDelOkRmyzECbbRbdxlUTokCjV1ArqMsCdjbyi21wirV69V%2B6okfZrJUzyhpJmKZ54zCWd2MZ1VzsxXoBaVoAlFT7X7VWanx33INNIkSUj5sp3Y0dw8MTYipD277I%2FnsAwaLKortoCApoYhObDy9YrEVLSYG8s%2FYEfOR%2BO0%2BgQpQYS1AxW%2F5Y6nBFVszWot%2F2ONHc1PjC5Tx52Z4zJZVDC34K0MsICxZzRctMOhKxHUNnzs66Fw6cxfVuSxxxE8CYRWQR8REhayqGfrWOCOyEEHqMv29HNTT0VWLhLsNE%2FYVE9sn4GgjEXAjvYUsy8YJDqyusQDPQmC%2FBTae38Fcc9YxqD9aTtAWBN%2FRNa%2BSbIOCQFGuB16HNEqglyjYc5tsQBdfL03xgCNEHstG32Db9GLMN2lnLZd0yyNxdInbe2zZctF0vOcCoKwHksjFFA7YnU4mUpgbHoPPJ7RZ91SfaP%2BO6yA%2BOvsxzcFwpWJbgFxuBuE1hZ4DSckvJFAZceQNP5bwwzCvFKijKTy9w4gMumQPL7hK2HLOmK7TOlERhk5iyoDRgBboqARLnXsaaiJ%2BoildAOHjf9zw3kOAW%2FPe2pe%2Bd6zrGi1V%2B1kgiQkFe3CXsrpNDW6ciXDRX7cdKSHdLpfWjjgv1uLYmWsjMDwLvGrc6G6Lled2Ttq58s4NlFjqX4MkAcWbGjIPnndPGZkTyLB7%2FamitrT1Nlvk0FbwhD8MZAGsV61lCRXleCtZB8EEjvgLMK0JB2yWBm4MGStfpATeGPT76Y4OkNRpHZv%2FFFMFwFe3Meq9dRqWLPBg0Vd8GvWLyBzyRV%2BzbzQTaQNV3K1lnhnVaGQ4AjM4aSopPpsEXWWndwhT%2FHk8fgzCF7oCsBjqxARFY0vNQFOjmCEAZYPv4%2BU6dikRl8qWH9dtVDq7LGiAE%2BU1vjQ1RXoUmyad%2FX1nAqatm6oZje8NYNb2w92wGIjj2Ww5Ll%2FEKiQPsTdm6Eq1oG8uGoKOmmGDp7vfiBLZZKVTVJGLbumqHQTUjIh0H%2Feyg0l%2FArtWQ2pZbVygjSSHBiY3eXJCg39tv2QJU5yc0na90pCAvwS9s1CGBTHkPkZ2n9AZac8B4ftSTceuTQTizww%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20231218T123553Z&X-Amz-SignedHeaders=host&X-Amz-Credential=ASIAYS23FEFIW4PPJEEP%2F20231218%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Expires=600&X-Amz-Signature=a33cc25ab2693453bcebcb975e7e5a2edf7f68e544f0c005119408c8427fe075",
+//         },
+//       },
+//       {
+//         id: 7,
+//         nodeType: "TOOL",
+//         shape: {
+//           type: "Image",
+//           source:
+//             "https://static-up-assets.s3.eu-north-1.amazonaws.com/Threat%20Hunting/tool.png?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEEQaCmV1LW5vcnRoLTEiRzBFAiEAgiXHeyDYR3O6aTvcsa%2Be0RAZyTBsIGFACP16%2FnfjnMsCIDPqGCle3Qwi5u6dfSjv76nvivcptFvzwFi8UAF0t26CKsgFCL3%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNTkwMjEyMzA5MzI5Igzg6CNnMpiD8exwbx0qnAVVKz7arsp9WFoMxCF0TLohDelOkRmyzECbbRbdxlUTokCjV1ArqMsCdjbyi21wirV69V%2B6okfZrJUzyhpJmKZ54zCWd2MZ1VzsxXoBaVoAlFT7X7VWanx33INNIkSUj5sp3Y0dw8MTYipD277I%2FnsAwaLKortoCApoYhObDy9YrEVLSYG8s%2FYEfOR%2BO0%2BgQpQYS1AxW%2F5Y6nBFVszWot%2F2ONHc1PjC5Tx52Z4zJZVDC34K0MsICxZzRctMOhKxHUNnzs66Fw6cxfVuSxxxE8CYRWQR8REhayqGfrWOCOyEEHqMv29HNTT0VWLhLsNE%2FYVE9sn4GgjEXAjvYUsy8YJDqyusQDPQmC%2FBTae38Fcc9YxqD9aTtAWBN%2FRNa%2BSbIOCQFGuB16HNEqglyjYc5tsQBdfL03xgCNEHstG32Db9GLMN2lnLZd0yyNxdInbe2zZctF0vOcCoKwHksjFFA7YnU4mUpgbHoPPJ7RZ91SfaP%2BO6yA%2BOvsxzcFwpWJbgFxuBuE1hZ4DSckvJFAZceQNP5bwwzCvFKijKTy9w4gMumQPL7hK2HLOmK7TOlERhk5iyoDRgBboqARLnXsaaiJ%2BoildAOHjf9zw3kOAW%2FPe2pe%2Bd6zrGi1V%2B1kgiQkFe3CXsrpNDW6ciXDRX7cdKSHdLpfWjjgv1uLYmWsjMDwLvGrc6G6Lled2Ttq58s4NlFjqX4MkAcWbGjIPnndPGZkTyLB7%2FamitrT1Nlvk0FbwhD8MZAGsV61lCRXleCtZB8EEjvgLMK0JB2yWBm4MGStfpATeGPT76Y4OkNRpHZv%2FFFMFwFe3Meq9dRqWLPBg0Vd8GvWLyBzyRV%2BzbzQTaQNV3K1lnhnVaGQ4AjM4aSopPpsEXWWndwhT%2FHk8fgzCF7oCsBjqxARFY0vNQFOjmCEAZYPv4%2BU6dikRl8qWH9dtVDq7LGiAE%2BU1vjQ1RXoUmyad%2FX1nAqatm6oZje8NYNb2w92wGIjj2Ww5Ll%2FEKiQPsTdm6Eq1oG8uGoKOmmGDp7vfiBLZZKVTVJGLbumqHQTUjIh0H%2Feyg0l%2FArtWQ2pZbVygjSSHBiY3eXJCg39tv2QJU5yc0na90pCAvwS9s1CGBTHkPkZ2n9AZac8B4ftSTceuTQTizww%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20231218T123553Z&X-Amz-SignedHeaders=host&X-Amz-Credential=ASIAYS23FEFIW4PPJEEP%2F20231218%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Expires=600&X-Amz-Signature=751949128afd9d47a26dade71fc513ed822c1520ff7cd488099e206a7c16a3c2",
+//         },
+//       },
+//       {
+//         id: 8,
+//         nodeType: "VULNERABILITY",
+//         shape: {
+//           type: "Image",
+//           source:
+//             "https://static-up-assets.s3.eu-north-1.amazonaws.com/Threat%20Hunting/vulnerability.png?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEEQaCmV1LW5vcnRoLTEiRzBFAiEAgiXHeyDYR3O6aTvcsa%2Be0RAZyTBsIGFACP16%2FnfjnMsCIDPqGCle3Qwi5u6dfSjv76nvivcptFvzwFi8UAF0t26CKsgFCL3%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNTkwMjEyMzA5MzI5Igzg6CNnMpiD8exwbx0qnAVVKz7arsp9WFoMxCF0TLohDelOkRmyzECbbRbdxlUTokCjV1ArqMsCdjbyi21wirV69V%2B6okfZrJUzyhpJmKZ54zCWd2MZ1VzsxXoBaVoAlFT7X7VWanx33INNIkSUj5sp3Y0dw8MTYipD277I%2FnsAwaLKortoCApoYhObDy9YrEVLSYG8s%2FYEfOR%2BO0%2BgQpQYS1AxW%2F5Y6nBFVszWot%2F2ONHc1PjC5Tx52Z4zJZVDC34K0MsICxZzRctMOhKxHUNnzs66Fw6cxfVuSxxxE8CYRWQR8REhayqGfrWOCOyEEHqMv29HNTT0VWLhLsNE%2FYVE9sn4GgjEXAjvYUsy8YJDqyusQDPQmC%2FBTae38Fcc9YxqD9aTtAWBN%2FRNa%2BSbIOCQFGuB16HNEqglyjYc5tsQBdfL03xgCNEHstG32Db9GLMN2lnLZd0yyNxdInbe2zZctF0vOcCoKwHksjFFA7YnU4mUpgbHoPPJ7RZ91SfaP%2BO6yA%2BOvsxzcFwpWJbgFxuBuE1hZ4DSckvJFAZceQNP5bwwzCvFKijKTy9w4gMumQPL7hK2HLOmK7TOlERhk5iyoDRgBboqARLnXsaaiJ%2BoildAOHjf9zw3kOAW%2FPe2pe%2Bd6zrGi1V%2B1kgiQkFe3CXsrpNDW6ciXDRX7cdKSHdLpfWjjgv1uLYmWsjMDwLvGrc6G6Lled2Ttq58s4NlFjqX4MkAcWbGjIPnndPGZkTyLB7%2FamitrT1Nlvk0FbwhD8MZAGsV61lCRXleCtZB8EEjvgLMK0JB2yWBm4MGStfpATeGPT76Y4OkNRpHZv%2FFFMFwFe3Meq9dRqWLPBg0Vd8GvWLyBzyRV%2BzbzQTaQNV3K1lnhnVaGQ4AjM4aSopPpsEXWWndwhT%2FHk8fgzCF7oCsBjqxARFY0vNQFOjmCEAZYPv4%2BU6dikRl8qWH9dtVDq7LGiAE%2BU1vjQ1RXoUmyad%2FX1nAqatm6oZje8NYNb2w92wGIjj2Ww5Ll%2FEKiQPsTdm6Eq1oG8uGoKOmmGDp7vfiBLZZKVTVJGLbumqHQTUjIh0H%2Feyg0l%2FArtWQ2pZbVygjSSHBiY3eXJCg39tv2QJU5yc0na90pCAvwS9s1CGBTHkPkZ2n9AZac8B4ftSTceuTQTizww%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20231218T123553Z&X-Amz-SignedHeaders=host&X-Amz-Credential=ASIAYS23FEFIW4PPJEEP%2F20231218%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Expires=600&X-Amz-Signature=7f6c89a53bf6d8d597f2d0d3c6db79067bc7d906bcd944097130564b3875c965",
+//         },
+//       },
+//     ],
+//   },
+//   {
+//     id: "ThreatIntel",
+//     category: "Threat Intel",
+//     images: [
+//       {
+//         id: 9,
+//         nodeType: "ATTACK_PATTERN",
+//         shape: {
+//           type: "Image",
+//           source:
+//             "https://static-up-assets.s3.eu-north-1.amazonaws.com/Threat%20Intel/attack-pattern.png?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEEQaCmV1LW5vcnRoLTEiRzBFAiEAgiXHeyDYR3O6aTvcsa%2Be0RAZyTBsIGFACP16%2FnfjnMsCIDPqGCle3Qwi5u6dfSjv76nvivcptFvzwFi8UAF0t26CKsgFCL3%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNTkwMjEyMzA5MzI5Igzg6CNnMpiD8exwbx0qnAVVKz7arsp9WFoMxCF0TLohDelOkRmyzECbbRbdxlUTokCjV1ArqMsCdjbyi21wirV69V%2B6okfZrJUzyhpJmKZ54zCWd2MZ1VzsxXoBaVoAlFT7X7VWanx33INNIkSUj5sp3Y0dw8MTYipD277I%2FnsAwaLKortoCApoYhObDy9YrEVLSYG8s%2FYEfOR%2BO0%2BgQpQYS1AxW%2F5Y6nBFVszWot%2F2ONHc1PjC5Tx52Z4zJZVDC34K0MsICxZzRctMOhKxHUNnzs66Fw6cxfVuSxxxE8CYRWQR8REhayqGfrWOCOyEEHqMv29HNTT0VWLhLsNE%2FYVE9sn4GgjEXAjvYUsy8YJDqyusQDPQmC%2FBTae38Fcc9YxqD9aTtAWBN%2FRNa%2BSbIOCQFGuB16HNEqglyjYc5tsQBdfL03xgCNEHstG32Db9GLMN2lnLZd0yyNxdInbe2zZctF0vOcCoKwHksjFFA7YnU4mUpgbHoPPJ7RZ91SfaP%2BO6yA%2BOvsxzcFwpWJbgFxuBuE1hZ4DSckvJFAZceQNP5bwwzCvFKijKTy9w4gMumQPL7hK2HLOmK7TOlERhk5iyoDRgBboqARLnXsaaiJ%2BoildAOHjf9zw3kOAW%2FPe2pe%2Bd6zrGi1V%2B1kgiQkFe3CXsrpNDW6ciXDRX7cdKSHdLpfWjjgv1uLYmWsjMDwLvGrc6G6Lled2Ttq58s4NlFjqX4MkAcWbGjIPnndPGZkTyLB7%2FamitrT1Nlvk0FbwhD8MZAGsV61lCRXleCtZB8EEjvgLMK0JB2yWBm4MGStfpATeGPT76Y4OkNRpHZv%2FFFMFwFe3Meq9dRqWLPBg0Vd8GvWLyBzyRV%2BzbzQTaQNV3K1lnhnVaGQ4AjM4aSopPpsEXWWndwhT%2FHk8fgzCF7oCsBjqxARFY0vNQFOjmCEAZYPv4%2BU6dikRl8qWH9dtVDq7LGiAE%2BU1vjQ1RXoUmyad%2FX1nAqatm6oZje8NYNb2w92wGIjj2Ww5Ll%2FEKiQPsTdm6Eq1oG8uGoKOmmGDp7vfiBLZZKVTVJGLbumqHQTUjIh0H%2Feyg0l%2FArtWQ2pZbVygjSSHBiY3eXJCg39tv2QJU5yc0na90pCAvwS9s1CGBTHkPkZ2n9AZac8B4ftSTceuTQTizww%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20231218T123553Z&X-Amz-SignedHeaders=host&X-Amz-Credential=ASIAYS23FEFIW4PPJEEP%2F20231218%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Expires=600&X-Amz-Signature=55a04e8b99002e5c0cabefe4ad2d515bb4cd508340508918beaa8e5337e2cf55",
+//         },
+//       },
+//       {
+//         id: 10,
+//         nodeType: "AUTONOMOUS_SYSTEM",
+//         shape: {
+//           type: "Image",
+//           source:
+//             "https://static-up-assets.s3.eu-north-1.amazonaws.com/Threat%20Intel/autonomous-system.png?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEEQaCmV1LW5vcnRoLTEiRzBFAiEAgiXHeyDYR3O6aTvcsa%2Be0RAZyTBsIGFACP16%2FnfjnMsCIDPqGCle3Qwi5u6dfSjv76nvivcptFvzwFi8UAF0t26CKsgFCL3%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNTkwMjEyMzA5MzI5Igzg6CNnMpiD8exwbx0qnAVVKz7arsp9WFoMxCF0TLohDelOkRmyzECbbRbdxlUTokCjV1ArqMsCdjbyi21wirV69V%2B6okfZrJUzyhpJmKZ54zCWd2MZ1VzsxXoBaVoAlFT7X7VWanx33INNIkSUj5sp3Y0dw8MTYipD277I%2FnsAwaLKortoCApoYhObDy9YrEVLSYG8s%2FYEfOR%2BO0%2BgQpQYS1AxW%2F5Y6nBFVszWot%2F2ONHc1PjC5Tx52Z4zJZVDC34K0MsICxZzRctMOhKxHUNnzs66Fw6cxfVuSxxxE8CYRWQR8REhayqGfrWOCOyEEHqMv29HNTT0VWLhLsNE%2FYVE9sn4GgjEXAjvYUsy8YJDqyusQDPQmC%2FBTae38Fcc9YxqD9aTtAWBN%2FRNa%2BSbIOCQFGuB16HNEqglyjYc5tsQBdfL03xgCNEHstG32Db9GLMN2lnLZd0yyNxdInbe2zZctF0vOcCoKwHksjFFA7YnU4mUpgbHoPPJ7RZ91SfaP%2BO6yA%2BOvsxzcFwpWJbgFxuBuE1hZ4DSckvJFAZceQNP5bwwzCvFKijKTy9w4gMumQPL7hK2HLOmK7TOlERhk5iyoDRgBboqARLnXsaaiJ%2BoildAOHjf9zw3kOAW%2FPe2pe%2Bd6zrGi1V%2B1kgiQkFe3CXsrpNDW6ciXDRX7cdKSHdLpfWjjgv1uLYmWsjMDwLvGrc6G6Lled2Ttq58s4NlFjqX4MkAcWbGjIPnndPGZkTyLB7%2FamitrT1Nlvk0FbwhD8MZAGsV61lCRXleCtZB8EEjvgLMK0JB2yWBm4MGStfpATeGPT76Y4OkNRpHZv%2FFFMFwFe3Meq9dRqWLPBg0Vd8GvWLyBzyRV%2BzbzQTaQNV3K1lnhnVaGQ4AjM4aSopPpsEXWWndwhT%2FHk8fgzCF7oCsBjqxARFY0vNQFOjmCEAZYPv4%2BU6dikRl8qWH9dtVDq7LGiAE%2BU1vjQ1RXoUmyad%2FX1nAqatm6oZje8NYNb2w92wGIjj2Ww5Ll%2FEKiQPsTdm6Eq1oG8uGoKOmmGDp7vfiBLZZKVTVJGLbumqHQTUjIh0H%2Feyg0l%2FArtWQ2pZbVygjSSHBiY3eXJCg39tv2QJU5yc0na90pCAvwS9s1CGBTHkPkZ2n9AZac8B4ftSTceuTQTizww%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20231218T123553Z&X-Amz-SignedHeaders=host&X-Amz-Credential=ASIAYS23FEFIW4PPJEEP%2F20231218%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Expires=600&X-Amz-Signature=0e9d1f57808c2dda4858b009419c4c8cb6f88dd5b790c13b58986fc7cc654da7",
+//         },
+//       },
+//       {
+//         id: 11,
+//         nodeType: "CAMPAIGN",
+//         shape: {
+//           type: "Image",
+//           source:
+//             "https://static-up-assets.s3.eu-north-1.amazonaws.com/Threat%20Intel/campaign.png?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEEQaCmV1LW5vcnRoLTEiRzBFAiEAgiXHeyDYR3O6aTvcsa%2Be0RAZyTBsIGFACP16%2FnfjnMsCIDPqGCle3Qwi5u6dfSjv76nvivcptFvzwFi8UAF0t26CKsgFCL3%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNTkwMjEyMzA5MzI5Igzg6CNnMpiD8exwbx0qnAVVKz7arsp9WFoMxCF0TLohDelOkRmyzECbbRbdxlUTokCjV1ArqMsCdjbyi21wirV69V%2B6okfZrJUzyhpJmKZ54zCWd2MZ1VzsxXoBaVoAlFT7X7VWanx33INNIkSUj5sp3Y0dw8MTYipD277I%2FnsAwaLKortoCApoYhObDy9YrEVLSYG8s%2FYEfOR%2BO0%2BgQpQYS1AxW%2F5Y6nBFVszWot%2F2ONHc1PjC5Tx52Z4zJZVDC34K0MsICxZzRctMOhKxHUNnzs66Fw6cxfVuSxxxE8CYRWQR8REhayqGfrWOCOyEEHqMv29HNTT0VWLhLsNE%2FYVE9sn4GgjEXAjvYUsy8YJDqyusQDPQmC%2FBTae38Fcc9YxqD9aTtAWBN%2FRNa%2BSbIOCQFGuB16HNEqglyjYc5tsQBdfL03xgCNEHstG32Db9GLMN2lnLZd0yyNxdInbe2zZctF0vOcCoKwHksjFFA7YnU4mUpgbHoPPJ7RZ91SfaP%2BO6yA%2BOvsxzcFwpWJbgFxuBuE1hZ4DSckvJFAZceQNP5bwwzCvFKijKTy9w4gMumQPL7hK2HLOmK7TOlERhk5iyoDRgBboqARLnXsaaiJ%2BoildAOHjf9zw3kOAW%2FPe2pe%2Bd6zrGi1V%2B1kgiQkFe3CXsrpNDW6ciXDRX7cdKSHdLpfWjjgv1uLYmWsjMDwLvGrc6G6Lled2Ttq58s4NlFjqX4MkAcWbGjIPnndPGZkTyLB7%2FamitrT1Nlvk0FbwhD8MZAGsV61lCRXleCtZB8EEjvgLMK0JB2yWBm4MGStfpATeGPT76Y4OkNRpHZv%2FFFMFwFe3Meq9dRqWLPBg0Vd8GvWLyBzyRV%2BzbzQTaQNV3K1lnhnVaGQ4AjM4aSopPpsEXWWndwhT%2FHk8fgzCF7oCsBjqxARFY0vNQFOjmCEAZYPv4%2BU6dikRl8qWH9dtVDq7LGiAE%2BU1vjQ1RXoUmyad%2FX1nAqatm6oZje8NYNb2w92wGIjj2Ww5Ll%2FEKiQPsTdm6Eq1oG8uGoKOmmGDp7vfiBLZZKVTVJGLbumqHQTUjIh0H%2Feyg0l%2FArtWQ2pZbVygjSSHBiY3eXJCg39tv2QJU5yc0na90pCAvwS9s1CGBTHkPkZ2n9AZac8B4ftSTceuTQTizww%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20231218T123553Z&X-Amz-SignedHeaders=host&X-Amz-Credential=ASIAYS23FEFIW4PPJEEP%2F20231218%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Expires=600&X-Amz-Signature=87308866f5d30b4041da72066627b1113e5728f43405537be69abee991e39880",
+//         },
+//       },
+//       {
+//         id: 12,
+//         nodeType: "COURSE_OF_ACTION",
+//         shape: {
+//           type: "Image",
+//           source:
+//             "https://static-up-assets.s3.eu-north-1.amazonaws.com/Threat%20Intel/course-of-action.png?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEEQaCmV1LW5vcnRoLTEiRzBFAiEAgiXHeyDYR3O6aTvcsa%2Be0RAZyTBsIGFACP16%2FnfjnMsCIDPqGCle3Qwi5u6dfSjv76nvivcptFvzwFi8UAF0t26CKsgFCL3%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNTkwMjEyMzA5MzI5Igzg6CNnMpiD8exwbx0qnAVVKz7arsp9WFoMxCF0TLohDelOkRmyzECbbRbdxlUTokCjV1ArqMsCdjbyi21wirV69V%2B6okfZrJUzyhpJmKZ54zCWd2MZ1VzsxXoBaVoAlFT7X7VWanx33INNIkSUj5sp3Y0dw8MTYipD277I%2FnsAwaLKortoCApoYhObDy9YrEVLSYG8s%2FYEfOR%2BO0%2BgQpQYS1AxW%2F5Y6nBFVszWot%2F2ONHc1PjC5Tx52Z4zJZVDC34K0MsICxZzRctMOhKxHUNnzs66Fw6cxfVuSxxxE8CYRWQR8REhayqGfrWOCOyEEHqMv29HNTT0VWLhLsNE%2FYVE9sn4GgjEXAjvYUsy8YJDqyusQDPQmC%2FBTae38Fcc9YxqD9aTtAWBN%2FRNa%2BSbIOCQFGuB16HNEqglyjYc5tsQBdfL03xgCNEHstG32Db9GLMN2lnLZd0yyNxdInbe2zZctF0vOcCoKwHksjFFA7YnU4mUpgbHoPPJ7RZ91SfaP%2BO6yA%2BOvsxzcFwpWJbgFxuBuE1hZ4DSckvJFAZceQNP5bwwzCvFKijKTy9w4gMumQPL7hK2HLOmK7TOlERhk5iyoDRgBboqARLnXsaaiJ%2BoildAOHjf9zw3kOAW%2FPe2pe%2Bd6zrGi1V%2B1kgiQkFe3CXsrpNDW6ciXDRX7cdKSHdLpfWjjgv1uLYmWsjMDwLvGrc6G6Lled2Ttq58s4NlFjqX4MkAcWbGjIPnndPGZkTyLB7%2FamitrT1Nlvk0FbwhD8MZAGsV61lCRXleCtZB8EEjvgLMK0JB2yWBm4MGStfpATeGPT76Y4OkNRpHZv%2FFFMFwFe3Meq9dRqWLPBg0Vd8GvWLyBzyRV%2BzbzQTaQNV3K1lnhnVaGQ4AjM4aSopPpsEXWWndwhT%2FHk8fgzCF7oCsBjqxARFY0vNQFOjmCEAZYPv4%2BU6dikRl8qWH9dtVDq7LGiAE%2BU1vjQ1RXoUmyad%2FX1nAqatm6oZje8NYNb2w92wGIjj2Ww5Ll%2FEKiQPsTdm6Eq1oG8uGoKOmmGDp7vfiBLZZKVTVJGLbumqHQTUjIh0H%2Feyg0l%2FArtWQ2pZbVygjSSHBiY3eXJCg39tv2QJU5yc0na90pCAvwS9s1CGBTHkPkZ2n9AZac8B4ftSTceuTQTizww%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20231218T123553Z&X-Amz-SignedHeaders=host&X-Amz-Credential=ASIAYS23FEFIW4PPJEEP%2F20231218%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Expires=600&X-Amz-Signature=f458783df71da71650bba632f845e7ccf53425641595ef9465a626cc02a9cddd",
+//         },
+//       },
+//       {
+//         id: 13,
+//         nodeType: "DOMAIN_NAME",
+//         shape: {
+//           type: "Image",
+//           source:
+//             "https://static-up-assets.s3.eu-north-1.amazonaws.com/Threat%20Intel/domain.png?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEEQaCmV1LW5vcnRoLTEiRzBFAiEAgiXHeyDYR3O6aTvcsa%2Be0RAZyTBsIGFACP16%2FnfjnMsCIDPqGCle3Qwi5u6dfSjv76nvivcptFvzwFi8UAF0t26CKsgFCL3%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNTkwMjEyMzA5MzI5Igzg6CNnMpiD8exwbx0qnAVVKz7arsp9WFoMxCF0TLohDelOkRmyzECbbRbdxlUTokCjV1ArqMsCdjbyi21wirV69V%2B6okfZrJUzyhpJmKZ54zCWd2MZ1VzsxXoBaVoAlFT7X7VWanx33INNIkSUj5sp3Y0dw8MTYipD277I%2FnsAwaLKortoCApoYhObDy9YrEVLSYG8s%2FYEfOR%2BO0%2BgQpQYS1AxW%2F5Y6nBFVszWot%2F2ONHc1PjC5Tx52Z4zJZVDC34K0MsICxZzRctMOhKxHUNnzs66Fw6cxfVuSxxxE8CYRWQR8REhayqGfrWOCOyEEHqMv29HNTT0VWLhLsNE%2FYVE9sn4GgjEXAjvYUsy8YJDqyusQDPQmC%2FBTae38Fcc9YxqD9aTtAWBN%2FRNa%2BSbIOCQFGuB16HNEqglyjYc5tsQBdfL03xgCNEHstG32Db9GLMN2lnLZd0yyNxdInbe2zZctF0vOcCoKwHksjFFA7YnU4mUpgbHoPPJ7RZ91SfaP%2BO6yA%2BOvsxzcFwpWJbgFxuBuE1hZ4DSckvJFAZceQNP5bwwzCvFKijKTy9w4gMumQPL7hK2HLOmK7TOlERhk5iyoDRgBboqARLnXsaaiJ%2BoildAOHjf9zw3kOAW%2FPe2pe%2Bd6zrGi1V%2B1kgiQkFe3CXsrpNDW6ciXDRX7cdKSHdLpfWjjgv1uLYmWsjMDwLvGrc6G6Lled2Ttq58s4NlFjqX4MkAcWbGjIPnndPGZkTyLB7%2FamitrT1Nlvk0FbwhD8MZAGsV61lCRXleCtZB8EEjvgLMK0JB2yWBm4MGStfpATeGPT76Y4OkNRpHZv%2FFFMFwFe3Meq9dRqWLPBg0Vd8GvWLyBzyRV%2BzbzQTaQNV3K1lnhnVaGQ4AjM4aSopPpsEXWWndwhT%2FHk8fgzCF7oCsBjqxARFY0vNQFOjmCEAZYPv4%2BU6dikRl8qWH9dtVDq7LGiAE%2BU1vjQ1RXoUmyad%2FX1nAqatm6oZje8NYNb2w92wGIjj2Ww5Ll%2FEKiQPsTdm6Eq1oG8uGoKOmmGDp7vfiBLZZKVTVJGLbumqHQTUjIh0H%2Feyg0l%2FArtWQ2pZbVygjSSHBiY3eXJCg39tv2QJU5yc0na90pCAvwS9s1CGBTHkPkZ2n9AZac8B4ftSTceuTQTizww%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20231218T123553Z&X-Amz-SignedHeaders=host&X-Amz-Credential=ASIAYS23FEFIW4PPJEEP%2F20231218%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Expires=600&X-Amz-Signature=99c98988ac2af428de855fcb99a335b720f18011b0c403a2cb4af6e1f8062191",
+//         },
+//       },
+//       {
+//         id: 14,
+//         nodeType: "HTTP_REQUEST",
+//         shape: {
+//           type: "Image",
+//           source:
+//             "https://static-up-assets.s3.eu-north-1.amazonaws.com/Threat%20Intel/http-request.png?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEEQaCmV1LW5vcnRoLTEiRzBFAiEAgiXHeyDYR3O6aTvcsa%2Be0RAZyTBsIGFACP16%2FnfjnMsCIDPqGCle3Qwi5u6dfSjv76nvivcptFvzwFi8UAF0t26CKsgFCL3%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNTkwMjEyMzA5MzI5Igzg6CNnMpiD8exwbx0qnAVVKz7arsp9WFoMxCF0TLohDelOkRmyzECbbRbdxlUTokCjV1ArqMsCdjbyi21wirV69V%2B6okfZrJUzyhpJmKZ54zCWd2MZ1VzsxXoBaVoAlFT7X7VWanx33INNIkSUj5sp3Y0dw8MTYipD277I%2FnsAwaLKortoCApoYhObDy9YrEVLSYG8s%2FYEfOR%2BO0%2BgQpQYS1AxW%2F5Y6nBFVszWot%2F2ONHc1PjC5Tx52Z4zJZVDC34K0MsICxZzRctMOhKxHUNnzs66Fw6cxfVuSxxxE8CYRWQR8REhayqGfrWOCOyEEHqMv29HNTT0VWLhLsNE%2FYVE9sn4GgjEXAjvYUsy8YJDqyusQDPQmC%2FBTae38Fcc9YxqD9aTtAWBN%2FRNa%2BSbIOCQFGuB16HNEqglyjYc5tsQBdfL03xgCNEHstG32Db9GLMN2lnLZd0yyNxdInbe2zZctF0vOcCoKwHksjFFA7YnU4mUpgbHoPPJ7RZ91SfaP%2BO6yA%2BOvsxzcFwpWJbgFxuBuE1hZ4DSckvJFAZceQNP5bwwzCvFKijKTy9w4gMumQPL7hK2HLOmK7TOlERhk5iyoDRgBboqARLnXsaaiJ%2BoildAOHjf9zw3kOAW%2FPe2pe%2Bd6zrGi1V%2B1kgiQkFe3CXsrpNDW6ciXDRX7cdKSHdLpfWjjgv1uLYmWsjMDwLvGrc6G6Lled2Ttq58s4NlFjqX4MkAcWbGjIPnndPGZkTyLB7%2FamitrT1Nlvk0FbwhD8MZAGsV61lCRXleCtZB8EEjvgLMK0JB2yWBm4MGStfpATeGPT76Y4OkNRpHZv%2FFFMFwFe3Meq9dRqWLPBg0Vd8GvWLyBzyRV%2BzbzQTaQNV3K1lnhnVaGQ4AjM4aSopPpsEXWWndwhT%2FHk8fgzCF7oCsBjqxARFY0vNQFOjmCEAZYPv4%2BU6dikRl8qWH9dtVDq7LGiAE%2BU1vjQ1RXoUmyad%2FX1nAqatm6oZje8NYNb2w92wGIjj2Ww5Ll%2FEKiQPsTdm6Eq1oG8uGoKOmmGDp7vfiBLZZKVTVJGLbumqHQTUjIh0H%2Feyg0l%2FArtWQ2pZbVygjSSHBiY3eXJCg39tv2QJU5yc0na90pCAvwS9s1CGBTHkPkZ2n9AZac8B4ftSTceuTQTizww%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20231218T123553Z&X-Amz-SignedHeaders=host&X-Amz-Credential=ASIAYS23FEFIW4PPJEEP%2F20231218%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Expires=600&X-Amz-Signature=2587de7aeb40e64c98576d2c00594a3ad49c574e2bd16ac4f4f846f35c64eb5f",
+//         },
+//       },
+//       {
+//         id: 15,
+//         nodeType: "IDENTITY",
+//         shape: {
+//           type: "Image",
+//           source:
+//             "https://static-up-assets.s3.eu-north-1.amazonaws.com/Threat%20Intel/identity.png?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEEQaCmV1LW5vcnRoLTEiRzBFAiEAgiXHeyDYR3O6aTvcsa%2Be0RAZyTBsIGFACP16%2FnfjnMsCIDPqGCle3Qwi5u6dfSjv76nvivcptFvzwFi8UAF0t26CKsgFCL3%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNTkwMjEyMzA5MzI5Igzg6CNnMpiD8exwbx0qnAVVKz7arsp9WFoMxCF0TLohDelOkRmyzECbbRbdxlUTokCjV1ArqMsCdjbyi21wirV69V%2B6okfZrJUzyhpJmKZ54zCWd2MZ1VzsxXoBaVoAlFT7X7VWanx33INNIkSUj5sp3Y0dw8MTYipD277I%2FnsAwaLKortoCApoYhObDy9YrEVLSYG8s%2FYEfOR%2BO0%2BgQpQYS1AxW%2F5Y6nBFVszWot%2F2ONHc1PjC5Tx52Z4zJZVDC34K0MsICxZzRctMOhKxHUNnzs66Fw6cxfVuSxxxE8CYRWQR8REhayqGfrWOCOyEEHqMv29HNTT0VWLhLsNE%2FYVE9sn4GgjEXAjvYUsy8YJDqyusQDPQmC%2FBTae38Fcc9YxqD9aTtAWBN%2FRNa%2BSbIOCQFGuB16HNEqglyjYc5tsQBdfL03xgCNEHstG32Db9GLMN2lnLZd0yyNxdInbe2zZctF0vOcCoKwHksjFFA7YnU4mUpgbHoPPJ7RZ91SfaP%2BO6yA%2BOvsxzcFwpWJbgFxuBuE1hZ4DSckvJFAZceQNP5bwwzCvFKijKTy9w4gMumQPL7hK2HLOmK7TOlERhk5iyoDRgBboqARLnXsaaiJ%2BoildAOHjf9zw3kOAW%2FPe2pe%2Bd6zrGi1V%2B1kgiQkFe3CXsrpNDW6ciXDRX7cdKSHdLpfWjjgv1uLYmWsjMDwLvGrc6G6Lled2Ttq58s4NlFjqX4MkAcWbGjIPnndPGZkTyLB7%2FamitrT1Nlvk0FbwhD8MZAGsV61lCRXleCtZB8EEjvgLMK0JB2yWBm4MGStfpATeGPT76Y4OkNRpHZv%2FFFMFwFe3Meq9dRqWLPBg0Vd8GvWLyBzyRV%2BzbzQTaQNV3K1lnhnVaGQ4AjM4aSopPpsEXWWndwhT%2FHk8fgzCF7oCsBjqxARFY0vNQFOjmCEAZYPv4%2BU6dikRl8qWH9dtVDq7LGiAE%2BU1vjQ1RXoUmyad%2FX1nAqatm6oZje8NYNb2w92wGIjj2Ww5Ll%2FEKiQPsTdm6Eq1oG8uGoKOmmGDp7vfiBLZZKVTVJGLbumqHQTUjIh0H%2Feyg0l%2FArtWQ2pZbVygjSSHBiY3eXJCg39tv2QJU5yc0na90pCAvwS9s1CGBTHkPkZ2n9AZac8B4ftSTceuTQTizww%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20231218T123553Z&X-Amz-SignedHeaders=host&X-Amz-Credential=ASIAYS23FEFIW4PPJEEP%2F20231218%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Expires=600&X-Amz-Signature=1acb48da4d5d30740f912913fa2fd7f9b4cfb8a0882dd63176ad47fb750b69e0",
+//         },
+//       },
+//       {
+//         id: 16,
+//         nodeType: "INTRUSION_SET",
+//         shape: {
+//           type: "Image",
+//           source:
+//             "https://static-up-assets.s3.eu-north-1.amazonaws.com/Threat%20Intel/intrusion-set.png?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEEQaCmV1LW5vcnRoLTEiRzBFAiEAgiXHeyDYR3O6aTvcsa%2Be0RAZyTBsIGFACP16%2FnfjnMsCIDPqGCle3Qwi5u6dfSjv76nvivcptFvzwFi8UAF0t26CKsgFCL3%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNTkwMjEyMzA5MzI5Igzg6CNnMpiD8exwbx0qnAVVKz7arsp9WFoMxCF0TLohDelOkRmyzECbbRbdxlUTokCjV1ArqMsCdjbyi21wirV69V%2B6okfZrJUzyhpJmKZ54zCWd2MZ1VzsxXoBaVoAlFT7X7VWanx33INNIkSUj5sp3Y0dw8MTYipD277I%2FnsAwaLKortoCApoYhObDy9YrEVLSYG8s%2FYEfOR%2BO0%2BgQpQYS1AxW%2F5Y6nBFVszWot%2F2ONHc1PjC5Tx52Z4zJZVDC34K0MsICxZzRctMOhKxHUNnzs66Fw6cxfVuSxxxE8CYRWQR8REhayqGfrWOCOyEEHqMv29HNTT0VWLhLsNE%2FYVE9sn4GgjEXAjvYUsy8YJDqyusQDPQmC%2FBTae38Fcc9YxqD9aTtAWBN%2FRNa%2BSbIOCQFGuB16HNEqglyjYc5tsQBdfL03xgCNEHstG32Db9GLMN2lnLZd0yyNxdInbe2zZctF0vOcCoKwHksjFFA7YnU4mUpgbHoPPJ7RZ91SfaP%2BO6yA%2BOvsxzcFwpWJbgFxuBuE1hZ4DSckvJFAZceQNP5bwwzCvFKijKTy9w4gMumQPL7hK2HLOmK7TOlERhk5iyoDRgBboqARLnXsaaiJ%2BoildAOHjf9zw3kOAW%2FPe2pe%2Bd6zrGi1V%2B1kgiQkFe3CXsrpNDW6ciXDRX7cdKSHdLpfWjjgv1uLYmWsjMDwLvGrc6G6Lled2Ttq58s4NlFjqX4MkAcWbGjIPnndPGZkTyLB7%2FamitrT1Nlvk0FbwhD8MZAGsV61lCRXleCtZB8EEjvgLMK0JB2yWBm4MGStfpATeGPT76Y4OkNRpHZv%2FFFMFwFe3Meq9dRqWLPBg0Vd8GvWLyBzyRV%2BzbzQTaQNV3K1lnhnVaGQ4AjM4aSopPpsEXWWndwhT%2FHk8fgzCF7oCsBjqxARFY0vNQFOjmCEAZYPv4%2BU6dikRl8qWH9dtVDq7LGiAE%2BU1vjQ1RXoUmyad%2FX1nAqatm6oZje8NYNb2w92wGIjj2Ww5Ll%2FEKiQPsTdm6Eq1oG8uGoKOmmGDp7vfiBLZZKVTVJGLbumqHQTUjIh0H%2Feyg0l%2FArtWQ2pZbVygjSSHBiY3eXJCg39tv2QJU5yc0na90pCAvwS9s1CGBTHkPkZ2n9AZac8B4ftSTceuTQTizww%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20231218T123553Z&X-Amz-SignedHeaders=host&X-Amz-Credential=ASIAYS23FEFIW4PPJEEP%2F20231218%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Expires=600&X-Amz-Signature=6eca6bdb68eba9e87ba5475cdfe4a376df6838d72a370cfe2d9a3bc3d63a5736",
+//         },
+//       },
+//       {
+//         id: 17,
+//         nodeType: "IP4_ADDR",
+//         shape: {
+//           type: "Image",
+//           source:
+//             "https://static-up-assets.s3.eu-north-1.amazonaws.com/Threat%20Intel/ipv4-addr.png?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEEQaCmV1LW5vcnRoLTEiRzBFAiEAgiXHeyDYR3O6aTvcsa%2Be0RAZyTBsIGFACP16%2FnfjnMsCIDPqGCle3Qwi5u6dfSjv76nvivcptFvzwFi8UAF0t26CKsgFCL3%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNTkwMjEyMzA5MzI5Igzg6CNnMpiD8exwbx0qnAVVKz7arsp9WFoMxCF0TLohDelOkRmyzECbbRbdxlUTokCjV1ArqMsCdjbyi21wirV69V%2B6okfZrJUzyhpJmKZ54zCWd2MZ1VzsxXoBaVoAlFT7X7VWanx33INNIkSUj5sp3Y0dw8MTYipD277I%2FnsAwaLKortoCApoYhObDy9YrEVLSYG8s%2FYEfOR%2BO0%2BgQpQYS1AxW%2F5Y6nBFVszWot%2F2ONHc1PjC5Tx52Z4zJZVDC34K0MsICxZzRctMOhKxHUNnzs66Fw6cxfVuSxxxE8CYRWQR8REhayqGfrWOCOyEEHqMv29HNTT0VWLhLsNE%2FYVE9sn4GgjEXAjvYUsy8YJDqyusQDPQmC%2FBTae38Fcc9YxqD9aTtAWBN%2FRNa%2BSbIOCQFGuB16HNEqglyjYc5tsQBdfL03xgCNEHstG32Db9GLMN2lnLZd0yyNxdInbe2zZctF0vOcCoKwHksjFFA7YnU4mUpgbHoPPJ7RZ91SfaP%2BO6yA%2BOvsxzcFwpWJbgFxuBuE1hZ4DSckvJFAZceQNP5bwwzCvFKijKTy9w4gMumQPL7hK2HLOmK7TOlERhk5iyoDRgBboqARLnXsaaiJ%2BoildAOHjf9zw3kOAW%2FPe2pe%2Bd6zrGi1V%2B1kgiQkFe3CXsrpNDW6ciXDRX7cdKSHdLpfWjjgv1uLYmWsjMDwLvGrc6G6Lled2Ttq58s4NlFjqX4MkAcWbGjIPnndPGZkTyLB7%2FamitrT1Nlvk0FbwhD8MZAGsV61lCRXleCtZB8EEjvgLMK0JB2yWBm4MGStfpATeGPT76Y4OkNRpHZv%2FFFMFwFe3Meq9dRqWLPBg0Vd8GvWLyBzyRV%2BzbzQTaQNV3K1lnhnVaGQ4AjM4aSopPpsEXWWndwhT%2FHk8fgzCF7oCsBjqxARFY0vNQFOjmCEAZYPv4%2BU6dikRl8qWH9dtVDq7LGiAE%2BU1vjQ1RXoUmyad%2FX1nAqatm6oZje8NYNb2w92wGIjj2Ww5Ll%2FEKiQPsTdm6Eq1oG8uGoKOmmGDp7vfiBLZZKVTVJGLbumqHQTUjIh0H%2Feyg0l%2FArtWQ2pZbVygjSSHBiY3eXJCg39tv2QJU5yc0na90pCAvwS9s1CGBTHkPkZ2n9AZac8B4ftSTceuTQTizww%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20231218T123553Z&X-Amz-SignedHeaders=host&X-Amz-Credential=ASIAYS23FEFIW4PPJEEP%2F20231218%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Expires=600&X-Amz-Signature=dd5efe28cd9c2df1e45f28dc2440e2828a37953b82b43936d83d6272b26e105b",
+//         },
+//       },
+//       {
+//         id: 18,
+//         nodeType: "IPV6_ADDR",
+//         shape: {
+//           type: "Image",
+//           source:
+//             "https://static-up-assets.s3.eu-north-1.amazonaws.com/Threat%20Intel/ipv6-addr.png?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEEQaCmV1LW5vcnRoLTEiRzBFAiEAgiXHeyDYR3O6aTvcsa%2Be0RAZyTBsIGFACP16%2FnfjnMsCIDPqGCle3Qwi5u6dfSjv76nvivcptFvzwFi8UAF0t26CKsgFCL3%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNTkwMjEyMzA5MzI5Igzg6CNnMpiD8exwbx0qnAVVKz7arsp9WFoMxCF0TLohDelOkRmyzECbbRbdxlUTokCjV1ArqMsCdjbyi21wirV69V%2B6okfZrJUzyhpJmKZ54zCWd2MZ1VzsxXoBaVoAlFT7X7VWanx33INNIkSUj5sp3Y0dw8MTYipD277I%2FnsAwaLKortoCApoYhObDy9YrEVLSYG8s%2FYEfOR%2BO0%2BgQpQYS1AxW%2F5Y6nBFVszWot%2F2ONHc1PjC5Tx52Z4zJZVDC34K0MsICxZzRctMOhKxHUNnzs66Fw6cxfVuSxxxE8CYRWQR8REhayqGfrWOCOyEEHqMv29HNTT0VWLhLsNE%2FYVE9sn4GgjEXAjvYUsy8YJDqyusQDPQmC%2FBTae38Fcc9YxqD9aTtAWBN%2FRNa%2BSbIOCQFGuB16HNEqglyjYc5tsQBdfL03xgCNEHstG32Db9GLMN2lnLZd0yyNxdInbe2zZctF0vOcCoKwHksjFFA7YnU4mUpgbHoPPJ7RZ91SfaP%2BO6yA%2BOvsxzcFwpWJbgFxuBuE1hZ4DSckvJFAZceQNP5bwwzCvFKijKTy9w4gMumQPL7hK2HLOmK7TOlERhk5iyoDRgBboqARLnXsaaiJ%2BoildAOHjf9zw3kOAW%2FPe2pe%2Bd6zrGi1V%2B1kgiQkFe3CXsrpNDW6ciXDRX7cdKSHdLpfWjjgv1uLYmWsjMDwLvGrc6G6Lled2Ttq58s4NlFjqX4MkAcWbGjIPnndPGZkTyLB7%2FamitrT1Nlvk0FbwhD8MZAGsV61lCRXleCtZB8EEjvgLMK0JB2yWBm4MGStfpATeGPT76Y4OkNRpHZv%2FFFMFwFe3Meq9dRqWLPBg0Vd8GvWLyBzyRV%2BzbzQTaQNV3K1lnhnVaGQ4AjM4aSopPpsEXWWndwhT%2FHk8fgzCF7oCsBjqxARFY0vNQFOjmCEAZYPv4%2BU6dikRl8qWH9dtVDq7LGiAE%2BU1vjQ1RXoUmyad%2FX1nAqatm6oZje8NYNb2w92wGIjj2Ww5Ll%2FEKiQPsTdm6Eq1oG8uGoKOmmGDp7vfiBLZZKVTVJGLbumqHQTUjIh0H%2Feyg0l%2FArtWQ2pZbVygjSSHBiY3eXJCg39tv2QJU5yc0na90pCAvwS9s1CGBTHkPkZ2n9AZac8B4ftSTceuTQTizww%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20231218T123553Z&X-Amz-SignedHeaders=host&X-Amz-Credential=ASIAYS23FEFIW4PPJEEP%2F20231218%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Expires=600&X-Amz-Signature=9ad98f77425ea5850921d08a466109964f878841eb0292781ebf8d78d4076d81",
+//         },
+//       },
+//       {
+//         id: 19,
+//         nodeType: "MAC_ADDRESS",
+//         shape: {
+//           type: "Image",
+//           source:
+//             "https://static-up-assets.s3.eu-north-1.amazonaws.com/Threat%20Intel/mac-addr.png?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEEQaCmV1LW5vcnRoLTEiRzBFAiEAgiXHeyDYR3O6aTvcsa%2Be0RAZyTBsIGFACP16%2FnfjnMsCIDPqGCle3Qwi5u6dfSjv76nvivcptFvzwFi8UAF0t26CKsgFCL3%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNTkwMjEyMzA5MzI5Igzg6CNnMpiD8exwbx0qnAVVKz7arsp9WFoMxCF0TLohDelOkRmyzECbbRbdxlUTokCjV1ArqMsCdjbyi21wirV69V%2B6okfZrJUzyhpJmKZ54zCWd2MZ1VzsxXoBaVoAlFT7X7VWanx33INNIkSUj5sp3Y0dw8MTYipD277I%2FnsAwaLKortoCApoYhObDy9YrEVLSYG8s%2FYEfOR%2BO0%2BgQpQYS1AxW%2F5Y6nBFVszWot%2F2ONHc1PjC5Tx52Z4zJZVDC34K0MsICxZzRctMOhKxHUNnzs66Fw6cxfVuSxxxE8CYRWQR8REhayqGfrWOCOyEEHqMv29HNTT0VWLhLsNE%2FYVE9sn4GgjEXAjvYUsy8YJDqyusQDPQmC%2FBTae38Fcc9YxqD9aTtAWBN%2FRNa%2BSbIOCQFGuB16HNEqglyjYc5tsQBdfL03xgCNEHstG32Db9GLMN2lnLZd0yyNxdInbe2zZctF0vOcCoKwHksjFFA7YnU4mUpgbHoPPJ7RZ91SfaP%2BO6yA%2BOvsxzcFwpWJbgFxuBuE1hZ4DSckvJFAZceQNP5bwwzCvFKijKTy9w4gMumQPL7hK2HLOmK7TOlERhk5iyoDRgBboqARLnXsaaiJ%2BoildAOHjf9zw3kOAW%2FPe2pe%2Bd6zrGi1V%2B1kgiQkFe3CXsrpNDW6ciXDRX7cdKSHdLpfWjjgv1uLYmWsjMDwLvGrc6G6Lled2Ttq58s4NlFjqX4MkAcWbGjIPnndPGZkTyLB7%2FamitrT1Nlvk0FbwhD8MZAGsV61lCRXleCtZB8EEjvgLMK0JB2yWBm4MGStfpATeGPT76Y4OkNRpHZv%2FFFMFwFe3Meq9dRqWLPBg0Vd8GvWLyBzyRV%2BzbzQTaQNV3K1lnhnVaGQ4AjM4aSopPpsEXWWndwhT%2FHk8fgzCF7oCsBjqxARFY0vNQFOjmCEAZYPv4%2BU6dikRl8qWH9dtVDq7LGiAE%2BU1vjQ1RXoUmyad%2FX1nAqatm6oZje8NYNb2w92wGIjj2Ww5Ll%2FEKiQPsTdm6Eq1oG8uGoKOmmGDp7vfiBLZZKVTVJGLbumqHQTUjIh0H%2Feyg0l%2FArtWQ2pZbVygjSSHBiY3eXJCg39tv2QJU5yc0na90pCAvwS9s1CGBTHkPkZ2n9AZac8B4ftSTceuTQTizww%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20231218T123553Z&X-Amz-SignedHeaders=host&X-Amz-Credential=ASIAYS23FEFIW4PPJEEP%2F20231218%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Expires=600&X-Amz-Signature=e092922a09f5f89911b65fd8ec54d53d040cd64943b36d16560813ece702cea0",
+//         },
+//       },
+//       {
+//         id: 20,
+//         nodeType: "MALWARE",
+//         shape: {
+//           type: "Image",
+//           source:
+//             "https://static-up-assets.s3.eu-north-1.amazonaws.com/Threat%20Intel/malware.png?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEEQaCmV1LW5vcnRoLTEiRzBFAiEAgiXHeyDYR3O6aTvcsa%2Be0RAZyTBsIGFACP16%2FnfjnMsCIDPqGCle3Qwi5u6dfSjv76nvivcptFvzwFi8UAF0t26CKsgFCL3%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNTkwMjEyMzA5MzI5Igzg6CNnMpiD8exwbx0qnAVVKz7arsp9WFoMxCF0TLohDelOkRmyzECbbRbdxlUTokCjV1ArqMsCdjbyi21wirV69V%2B6okfZrJUzyhpJmKZ54zCWd2MZ1VzsxXoBaVoAlFT7X7VWanx33INNIkSUj5sp3Y0dw8MTYipD277I%2FnsAwaLKortoCApoYhObDy9YrEVLSYG8s%2FYEfOR%2BO0%2BgQpQYS1AxW%2F5Y6nBFVszWot%2F2ONHc1PjC5Tx52Z4zJZVDC34K0MsICxZzRctMOhKxHUNnzs66Fw6cxfVuSxxxE8CYRWQR8REhayqGfrWOCOyEEHqMv29HNTT0VWLhLsNE%2FYVE9sn4GgjEXAjvYUsy8YJDqyusQDPQmC%2FBTae38Fcc9YxqD9aTtAWBN%2FRNa%2BSbIOCQFGuB16HNEqglyjYc5tsQBdfL03xgCNEHstG32Db9GLMN2lnLZd0yyNxdInbe2zZctF0vOcCoKwHksjFFA7YnU4mUpgbHoPPJ7RZ91SfaP%2BO6yA%2BOvsxzcFwpWJbgFxuBuE1hZ4DSckvJFAZceQNP5bwwzCvFKijKTy9w4gMumQPL7hK2HLOmK7TOlERhk5iyoDRgBboqARLnXsaaiJ%2BoildAOHjf9zw3kOAW%2FPe2pe%2Bd6zrGi1V%2B1kgiQkFe3CXsrpNDW6ciXDRX7cdKSHdLpfWjjgv1uLYmWsjMDwLvGrc6G6Lled2Ttq58s4NlFjqX4MkAcWbGjIPnndPGZkTyLB7%2FamitrT1Nlvk0FbwhD8MZAGsV61lCRXleCtZB8EEjvgLMK0JB2yWBm4MGStfpATeGPT76Y4OkNRpHZv%2FFFMFwFe3Meq9dRqWLPBg0Vd8GvWLyBzyRV%2BzbzQTaQNV3K1lnhnVaGQ4AjM4aSopPpsEXWWndwhT%2FHk8fgzCF7oCsBjqxARFY0vNQFOjmCEAZYPv4%2BU6dikRl8qWH9dtVDq7LGiAE%2BU1vjQ1RXoUmyad%2FX1nAqatm6oZje8NYNb2w92wGIjj2Ww5Ll%2FEKiQPsTdm6Eq1oG8uGoKOmmGDp7vfiBLZZKVTVJGLbumqHQTUjIh0H%2Feyg0l%2FArtWQ2pZbVygjSSHBiY3eXJCg39tv2QJU5yc0na90pCAvwS9s1CGBTHkPkZ2n9AZac8B4ftSTceuTQTizww%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20231218T123553Z&X-Amz-SignedHeaders=host&X-Amz-Credential=ASIAYS23FEFIW4PPJEEP%2F20231218%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Expires=600&X-Amz-Signature=652df7b360d6bbf4b7fee4bc2fa4952a4f22e58145cc3da8d5ff16dbfbc83744",
+//         },
+//       },
+//       {
+//         id: 21,
+//         nodeType: "NETWORK_TRAFFIC",
+//         shape: {
+//           type: "Image",
+//           source:
+//             "https://static-up-assets.s3.eu-north-1.amazonaws.com/Threat%20Intel/network-traffic.png?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEEQaCmV1LW5vcnRoLTEiRzBFAiEAgiXHeyDYR3O6aTvcsa%2Be0RAZyTBsIGFACP16%2FnfjnMsCIDPqGCle3Qwi5u6dfSjv76nvivcptFvzwFi8UAF0t26CKsgFCL3%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNTkwMjEyMzA5MzI5Igzg6CNnMpiD8exwbx0qnAVVKz7arsp9WFoMxCF0TLohDelOkRmyzECbbRbdxlUTokCjV1ArqMsCdjbyi21wirV69V%2B6okfZrJUzyhpJmKZ54zCWd2MZ1VzsxXoBaVoAlFT7X7VWanx33INNIkSUj5sp3Y0dw8MTYipD277I%2FnsAwaLKortoCApoYhObDy9YrEVLSYG8s%2FYEfOR%2BO0%2BgQpQYS1AxW%2F5Y6nBFVszWot%2F2ONHc1PjC5Tx52Z4zJZVDC34K0MsICxZzRctMOhKxHUNnzs66Fw6cxfVuSxxxE8CYRWQR8REhayqGfrWOCOyEEHqMv29HNTT0VWLhLsNE%2FYVE9sn4GgjEXAjvYUsy8YJDqyusQDPQmC%2FBTae38Fcc9YxqD9aTtAWBN%2FRNa%2BSbIOCQFGuB16HNEqglyjYc5tsQBdfL03xgCNEHstG32Db9GLMN2lnLZd0yyNxdInbe2zZctF0vOcCoKwHksjFFA7YnU4mUpgbHoPPJ7RZ91SfaP%2BO6yA%2BOvsxzcFwpWJbgFxuBuE1hZ4DSckvJFAZceQNP5bwwzCvFKijKTy9w4gMumQPL7hK2HLOmK7TOlERhk5iyoDRgBboqARLnXsaaiJ%2BoildAOHjf9zw3kOAW%2FPe2pe%2Bd6zrGi1V%2B1kgiQkFe3CXsrpNDW6ciXDRX7cdKSHdLpfWjjgv1uLYmWsjMDwLvGrc6G6Lled2Ttq58s4NlFjqX4MkAcWbGjIPnndPGZkTyLB7%2FamitrT1Nlvk0FbwhD8MZAGsV61lCRXleCtZB8EEjvgLMK0JB2yWBm4MGStfpATeGPT76Y4OkNRpHZv%2FFFMFwFe3Meq9dRqWLPBg0Vd8GvWLyBzyRV%2BzbzQTaQNV3K1lnhnVaGQ4AjM4aSopPpsEXWWndwhT%2FHk8fgzCF7oCsBjqxARFY0vNQFOjmCEAZYPv4%2BU6dikRl8qWH9dtVDq7LGiAE%2BU1vjQ1RXoUmyad%2FX1nAqatm6oZje8NYNb2w92wGIjj2Ww5Ll%2FEKiQPsTdm6Eq1oG8uGoKOmmGDp7vfiBLZZKVTVJGLbumqHQTUjIh0H%2Feyg0l%2FArtWQ2pZbVygjSSHBiY3eXJCg39tv2QJU5yc0na90pCAvwS9s1CGBTHkPkZ2n9AZac8B4ftSTceuTQTizww%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20231218T123553Z&X-Amz-SignedHeaders=host&X-Amz-Credential=ASIAYS23FEFIW4PPJEEP%2F20231218%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Expires=600&X-Amz-Signature=6af848761352bd23803c34327f2025c67d7bda8f810a17681948eba56dcab48a",
+//         },
+//       },
+//       {
+//         id: 22,
+//         nodeType: "OBSERVABLE",
+//         shape: {
+//           type: "Image",
+//           source:
+//             "https://static-up-assets.s3.eu-north-1.amazonaws.com/Threat%20Intel/observable.png?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEEQaCmV1LW5vcnRoLTEiRzBFAiEAgiXHeyDYR3O6aTvcsa%2Be0RAZyTBsIGFACP16%2FnfjnMsCIDPqGCle3Qwi5u6dfSjv76nvivcptFvzwFi8UAF0t26CKsgFCL3%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNTkwMjEyMzA5MzI5Igzg6CNnMpiD8exwbx0qnAVVKz7arsp9WFoMxCF0TLohDelOkRmyzECbbRbdxlUTokCjV1ArqMsCdjbyi21wirV69V%2B6okfZrJUzyhpJmKZ54zCWd2MZ1VzsxXoBaVoAlFT7X7VWanx33INNIkSUj5sp3Y0dw8MTYipD277I%2FnsAwaLKortoCApoYhObDy9YrEVLSYG8s%2FYEfOR%2BO0%2BgQpQYS1AxW%2F5Y6nBFVszWot%2F2ONHc1PjC5Tx52Z4zJZVDC34K0MsICxZzRctMOhKxHUNnzs66Fw6cxfVuSxxxE8CYRWQR8REhayqGfrWOCOyEEHqMv29HNTT0VWLhLsNE%2FYVE9sn4GgjEXAjvYUsy8YJDqyusQDPQmC%2FBTae38Fcc9YxqD9aTtAWBN%2FRNa%2BSbIOCQFGuB16HNEqglyjYc5tsQBdfL03xgCNEHstG32Db9GLMN2lnLZd0yyNxdInbe2zZctF0vOcCoKwHksjFFA7YnU4mUpgbHoPPJ7RZ91SfaP%2BO6yA%2BOvsxzcFwpWJbgFxuBuE1hZ4DSckvJFAZceQNP5bwwzCvFKijKTy9w4gMumQPL7hK2HLOmK7TOlERhk5iyoDRgBboqARLnXsaaiJ%2BoildAOHjf9zw3kOAW%2FPe2pe%2Bd6zrGi1V%2B1kgiQkFe3CXsrpNDW6ciXDRX7cdKSHdLpfWjjgv1uLYmWsjMDwLvGrc6G6Lled2Ttq58s4NlFjqX4MkAcWbGjIPnndPGZkTyLB7%2FamitrT1Nlvk0FbwhD8MZAGsV61lCRXleCtZB8EEjvgLMK0JB2yWBm4MGStfpATeGPT76Y4OkNRpHZv%2FFFMFwFe3Meq9dRqWLPBg0Vd8GvWLyBzyRV%2BzbzQTaQNV3K1lnhnVaGQ4AjM4aSopPpsEXWWndwhT%2FHk8fgzCF7oCsBjqxARFY0vNQFOjmCEAZYPv4%2BU6dikRl8qWH9dtVDq7LGiAE%2BU1vjQ1RXoUmyad%2FX1nAqatm6oZje8NYNb2w92wGIjj2Ww5Ll%2FEKiQPsTdm6Eq1oG8uGoKOmmGDp7vfiBLZZKVTVJGLbumqHQTUjIh0H%2Feyg0l%2FArtWQ2pZbVygjSSHBiY3eXJCg39tv2QJU5yc0na90pCAvwS9s1CGBTHkPkZ2n9AZac8B4ftSTceuTQTizww%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20231218T123553Z&X-Amz-SignedHeaders=host&X-Amz-Credential=ASIAYS23FEFIW4PPJEEP%2F20231218%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Expires=600&X-Amz-Signature=7d02486606803864f1be8462d58427d1715fd61a8c40cb017964b8b615dec68a",
+//         },
+//       },
+//       {
+//         id: 23,
+//         nodeType: "PACP",
+//         shape: {
+//           type: "Image",
+//           source:
+//             "https://static-up-assets.s3.eu-north-1.amazonaws.com/Threat%20Intel/pcap.png?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEEQaCmV1LW5vcnRoLTEiRzBFAiEAgiXHeyDYR3O6aTvcsa%2Be0RAZyTBsIGFACP16%2FnfjnMsCIDPqGCle3Qwi5u6dfSjv76nvivcptFvzwFi8UAF0t26CKsgFCL3%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNTkwMjEyMzA5MzI5Igzg6CNnMpiD8exwbx0qnAVVKz7arsp9WFoMxCF0TLohDelOkRmyzECbbRbdxlUTokCjV1ArqMsCdjbyi21wirV69V%2B6okfZrJUzyhpJmKZ54zCWd2MZ1VzsxXoBaVoAlFT7X7VWanx33INNIkSUj5sp3Y0dw8MTYipD277I%2FnsAwaLKortoCApoYhObDy9YrEVLSYG8s%2FYEfOR%2BO0%2BgQpQYS1AxW%2F5Y6nBFVszWot%2F2ONHc1PjC5Tx52Z4zJZVDC34K0MsICxZzRctMOhKxHUNnzs66Fw6cxfVuSxxxE8CYRWQR8REhayqGfrWOCOyEEHqMv29HNTT0VWLhLsNE%2FYVE9sn4GgjEXAjvYUsy8YJDqyusQDPQmC%2FBTae38Fcc9YxqD9aTtAWBN%2FRNa%2BSbIOCQFGuB16HNEqglyjYc5tsQBdfL03xgCNEHstG32Db9GLMN2lnLZd0yyNxdInbe2zZctF0vOcCoKwHksjFFA7YnU4mUpgbHoPPJ7RZ91SfaP%2BO6yA%2BOvsxzcFwpWJbgFxuBuE1hZ4DSckvJFAZceQNP5bwwzCvFKijKTy9w4gMumQPL7hK2HLOmK7TOlERhk5iyoDRgBboqARLnXsaaiJ%2BoildAOHjf9zw3kOAW%2FPe2pe%2Bd6zrGi1V%2B1kgiQkFe3CXsrpNDW6ciXDRX7cdKSHdLpfWjjgv1uLYmWsjMDwLvGrc6G6Lled2Ttq58s4NlFjqX4MkAcWbGjIPnndPGZkTyLB7%2FamitrT1Nlvk0FbwhD8MZAGsV61lCRXleCtZB8EEjvgLMK0JB2yWBm4MGStfpATeGPT76Y4OkNRpHZv%2FFFMFwFe3Meq9dRqWLPBg0Vd8GvWLyBzyRV%2BzbzQTaQNV3K1lnhnVaGQ4AjM4aSopPpsEXWWndwhT%2FHk8fgzCF7oCsBjqxARFY0vNQFOjmCEAZYPv4%2BU6dikRl8qWH9dtVDq7LGiAE%2BU1vjQ1RXoUmyad%2FX1nAqatm6oZje8NYNb2w92wGIjj2Ww5Ll%2FEKiQPsTdm6Eq1oG8uGoKOmmGDp7vfiBLZZKVTVJGLbumqHQTUjIh0H%2Feyg0l%2FArtWQ2pZbVygjSSHBiY3eXJCg39tv2QJU5yc0na90pCAvwS9s1CGBTHkPkZ2n9AZac8B4ftSTceuTQTizww%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20231218T123553Z&X-Amz-SignedHeaders=host&X-Amz-Credential=ASIAYS23FEFIW4PPJEEP%2F20231218%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Expires=600&X-Amz-Signature=40f91ce2fb991defb1d0a6d6a7c4195f8f992ff515dcec49795f29946d9bd736",
+//         },
+//       },
+//       {
+//         id: 24,
+//         nodeType: "SIGHTING",
+//         shape: {
+//           type: "Image",
+//           source:
+//             "https://static-up-assets.s3.eu-north-1.amazonaws.com/Threat%20Intel/sighting.png?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEEQaCmV1LW5vcnRoLTEiRzBFAiEAgiXHeyDYR3O6aTvcsa%2Be0RAZyTBsIGFACP16%2FnfjnMsCIDPqGCle3Qwi5u6dfSjv76nvivcptFvzwFi8UAF0t26CKsgFCL3%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNTkwMjEyMzA5MzI5Igzg6CNnMpiD8exwbx0qnAVVKz7arsp9WFoMxCF0TLohDelOkRmyzECbbRbdxlUTokCjV1ArqMsCdjbyi21wirV69V%2B6okfZrJUzyhpJmKZ54zCWd2MZ1VzsxXoBaVoAlFT7X7VWanx33INNIkSUj5sp3Y0dw8MTYipD277I%2FnsAwaLKortoCApoYhObDy9YrEVLSYG8s%2FYEfOR%2BO0%2BgQpQYS1AxW%2F5Y6nBFVszWot%2F2ONHc1PjC5Tx52Z4zJZVDC34K0MsICxZzRctMOhKxHUNnzs66Fw6cxfVuSxxxE8CYRWQR8REhayqGfrWOCOyEEHqMv29HNTT0VWLhLsNE%2FYVE9sn4GgjEXAjvYUsy8YJDqyusQDPQmC%2FBTae38Fcc9YxqD9aTtAWBN%2FRNa%2BSbIOCQFGuB16HNEqglyjYc5tsQBdfL03xgCNEHstG32Db9GLMN2lnLZd0yyNxdInbe2zZctF0vOcCoKwHksjFFA7YnU4mUpgbHoPPJ7RZ91SfaP%2BO6yA%2BOvsxzcFwpWJbgFxuBuE1hZ4DSckvJFAZceQNP5bwwzCvFKijKTy9w4gMumQPL7hK2HLOmK7TOlERhk5iyoDRgBboqARLnXsaaiJ%2BoildAOHjf9zw3kOAW%2FPe2pe%2Bd6zrGi1V%2B1kgiQkFe3CXsrpNDW6ciXDRX7cdKSHdLpfWjjgv1uLYmWsjMDwLvGrc6G6Lled2Ttq58s4NlFjqX4MkAcWbGjIPnndPGZkTyLB7%2FamitrT1Nlvk0FbwhD8MZAGsV61lCRXleCtZB8EEjvgLMK0JB2yWBm4MGStfpATeGPT76Y4OkNRpHZv%2FFFMFwFe3Meq9dRqWLPBg0Vd8GvWLyBzyRV%2BzbzQTaQNV3K1lnhnVaGQ4AjM4aSopPpsEXWWndwhT%2FHk8fgzCF7oCsBjqxARFY0vNQFOjmCEAZYPv4%2BU6dikRl8qWH9dtVDq7LGiAE%2BU1vjQ1RXoUmyad%2FX1nAqatm6oZje8NYNb2w92wGIjj2Ww5Ll%2FEKiQPsTdm6Eq1oG8uGoKOmmGDp7vfiBLZZKVTVJGLbumqHQTUjIh0H%2Feyg0l%2FArtWQ2pZbVygjSSHBiY3eXJCg39tv2QJU5yc0na90pCAvwS9s1CGBTHkPkZ2n9AZac8B4ftSTceuTQTizww%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20231218T123553Z&X-Amz-SignedHeaders=host&X-Amz-Credential=ASIAYS23FEFIW4PPJEEP%2F20231218%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Expires=600&X-Amz-Signature=d099039f489b533b66a60d0fe94136576bd59e90fa3983ccf1578bf6373b4e99",
+//         },
+//       },
+//       {
+//         id: 25,
+//         nodeType: "THREAT_ACTOR",
+//         shape: {
+//           type: "Image",
+//           source:
+//             "https://static-up-assets.s3.eu-north-1.amazonaws.com/Threat%20Intel/threat-actor.png?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEEQaCmV1LW5vcnRoLTEiRzBFAiEAgiXHeyDYR3O6aTvcsa%2Be0RAZyTBsIGFACP16%2FnfjnMsCIDPqGCle3Qwi5u6dfSjv76nvivcptFvzwFi8UAF0t26CKsgFCL3%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNTkwMjEyMzA5MzI5Igzg6CNnMpiD8exwbx0qnAVVKz7arsp9WFoMxCF0TLohDelOkRmyzECbbRbdxlUTokCjV1ArqMsCdjbyi21wirV69V%2B6okfZrJUzyhpJmKZ54zCWd2MZ1VzsxXoBaVoAlFT7X7VWanx33INNIkSUj5sp3Y0dw8MTYipD277I%2FnsAwaLKortoCApoYhObDy9YrEVLSYG8s%2FYEfOR%2BO0%2BgQpQYS1AxW%2F5Y6nBFVszWot%2F2ONHc1PjC5Tx52Z4zJZVDC34K0MsICxZzRctMOhKxHUNnzs66Fw6cxfVuSxxxE8CYRWQR8REhayqGfrWOCOyEEHqMv29HNTT0VWLhLsNE%2FYVE9sn4GgjEXAjvYUsy8YJDqyusQDPQmC%2FBTae38Fcc9YxqD9aTtAWBN%2FRNa%2BSbIOCQFGuB16HNEqglyjYc5tsQBdfL03xgCNEHstG32Db9GLMN2lnLZd0yyNxdInbe2zZctF0vOcCoKwHksjFFA7YnU4mUpgbHoPPJ7RZ91SfaP%2BO6yA%2BOvsxzcFwpWJbgFxuBuE1hZ4DSckvJFAZceQNP5bwwzCvFKijKTy9w4gMumQPL7hK2HLOmK7TOlERhk5iyoDRgBboqARLnXsaaiJ%2BoildAOHjf9zw3kOAW%2FPe2pe%2Bd6zrGi1V%2B1kgiQkFe3CXsrpNDW6ciXDRX7cdKSHdLpfWjjgv1uLYmWsjMDwLvGrc6G6Lled2Ttq58s4NlFjqX4MkAcWbGjIPnndPGZkTyLB7%2FamitrT1Nlvk0FbwhD8MZAGsV61lCRXleCtZB8EEjvgLMK0JB2yWBm4MGStfpATeGPT76Y4OkNRpHZv%2FFFMFwFe3Meq9dRqWLPBg0Vd8GvWLyBzyRV%2BzbzQTaQNV3K1lnhnVaGQ4AjM4aSopPpsEXWWndwhT%2FHk8fgzCF7oCsBjqxARFY0vNQFOjmCEAZYPv4%2BU6dikRl8qWH9dtVDq7LGiAE%2BU1vjQ1RXoUmyad%2FX1nAqatm6oZje8NYNb2w92wGIjj2Ww5Ll%2FEKiQPsTdm6Eq1oG8uGoKOmmGDp7vfiBLZZKVTVJGLbumqHQTUjIh0H%2Feyg0l%2FArtWQ2pZbVygjSSHBiY3eXJCg39tv2QJU5yc0na90pCAvwS9s1CGBTHkPkZ2n9AZac8B4ftSTceuTQTizww%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20231218T123553Z&X-Amz-SignedHeaders=host&X-Amz-Credential=ASIAYS23FEFIW4PPJEEP%2F20231218%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Expires=600&X-Amz-Signature=342acf6e8d15db20257faaafc681644e8a4cfc688268619c9b1500e268700fe7",
+//         },
+//       },
+//       {
+//         id: 26,
+//         nodeType: "TOOL",
+//         shape: {
+//           type: "Image",
+//           source:
+//             "https://static-up-assets.s3.eu-north-1.amazonaws.com/Threat%20Intel/tool.png?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEEQaCmV1LW5vcnRoLTEiRzBFAiEAgiXHeyDYR3O6aTvcsa%2Be0RAZyTBsIGFACP16%2FnfjnMsCIDPqGCle3Qwi5u6dfSjv76nvivcptFvzwFi8UAF0t26CKsgFCL3%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNTkwMjEyMzA5MzI5Igzg6CNnMpiD8exwbx0qnAVVKz7arsp9WFoMxCF0TLohDelOkRmyzECbbRbdxlUTokCjV1ArqMsCdjbyi21wirV69V%2B6okfZrJUzyhpJmKZ54zCWd2MZ1VzsxXoBaVoAlFT7X7VWanx33INNIkSUj5sp3Y0dw8MTYipD277I%2FnsAwaLKortoCApoYhObDy9YrEVLSYG8s%2FYEfOR%2BO0%2BgQpQYS1AxW%2F5Y6nBFVszWot%2F2ONHc1PjC5Tx52Z4zJZVDC34K0MsICxZzRctMOhKxHUNnzs66Fw6cxfVuSxxxE8CYRWQR8REhayqGfrWOCOyEEHqMv29HNTT0VWLhLsNE%2FYVE9sn4GgjEXAjvYUsy8YJDqyusQDPQmC%2FBTae38Fcc9YxqD9aTtAWBN%2FRNa%2BSbIOCQFGuB16HNEqglyjYc5tsQBdfL03xgCNEHstG32Db9GLMN2lnLZd0yyNxdInbe2zZctF0vOcCoKwHksjFFA7YnU4mUpgbHoPPJ7RZ91SfaP%2BO6yA%2BOvsxzcFwpWJbgFxuBuE1hZ4DSckvJFAZceQNP5bwwzCvFKijKTy9w4gMumQPL7hK2HLOmK7TOlERhk5iyoDRgBboqARLnXsaaiJ%2BoildAOHjf9zw3kOAW%2FPe2pe%2Bd6zrGi1V%2B1kgiQkFe3CXsrpNDW6ciXDRX7cdKSHdLpfWjjgv1uLYmWsjMDwLvGrc6G6Lled2Ttq58s4NlFjqX4MkAcWbGjIPnndPGZkTyLB7%2FamitrT1Nlvk0FbwhD8MZAGsV61lCRXleCtZB8EEjvgLMK0JB2yWBm4MGStfpATeGPT76Y4OkNRpHZv%2FFFMFwFe3Meq9dRqWLPBg0Vd8GvWLyBzyRV%2BzbzQTaQNV3K1lnhnVaGQ4AjM4aSopPpsEXWWndwhT%2FHk8fgzCF7oCsBjqxARFY0vNQFOjmCEAZYPv4%2BU6dikRl8qWH9dtVDq7LGiAE%2BU1vjQ1RXoUmyad%2FX1nAqatm6oZje8NYNb2w92wGIjj2Ww5Ll%2FEKiQPsTdm6Eq1oG8uGoKOmmGDp7vfiBLZZKVTVJGLbumqHQTUjIh0H%2Feyg0l%2FArtWQ2pZbVygjSSHBiY3eXJCg39tv2QJU5yc0na90pCAvwS9s1CGBTHkPkZ2n9AZac8B4ftSTceuTQTizww%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20231218T123553Z&X-Amz-SignedHeaders=host&X-Amz-Credential=ASIAYS23FEFIW4PPJEEP%2F20231218%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Expires=600&X-Amz-Signature=3928d39d71a2c2bc6c461fe99c1d8f9ca4a0fb2f6f3ddd713ad147e52b58a46d",
+//         },
+//       },
+//       {
+//         id: 27,
+//         nodeType: "VULNERABILITY",
+//         shape: {
+//           type: "Image",
+//           source:
+//             "https://static-up-assets.s3.eu-north-1.amazonaws.com/Threat%20Intel/vulnerability.png?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEEQaCmV1LW5vcnRoLTEiRzBFAiEAgiXHeyDYR3O6aTvcsa%2Be0RAZyTBsIGFACP16%2FnfjnMsCIDPqGCle3Qwi5u6dfSjv76nvivcptFvzwFi8UAF0t26CKsgFCL3%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNTkwMjEyMzA5MzI5Igzg6CNnMpiD8exwbx0qnAVVKz7arsp9WFoMxCF0TLohDelOkRmyzECbbRbdxlUTokCjV1ArqMsCdjbyi21wirV69V%2B6okfZrJUzyhpJmKZ54zCWd2MZ1VzsxXoBaVoAlFT7X7VWanx33INNIkSUj5sp3Y0dw8MTYipD277I%2FnsAwaLKortoCApoYhObDy9YrEVLSYG8s%2FYEfOR%2BO0%2BgQpQYS1AxW%2F5Y6nBFVszWot%2F2ONHc1PjC5Tx52Z4zJZVDC34K0MsICxZzRctMOhKxHUNnzs66Fw6cxfVuSxxxE8CYRWQR8REhayqGfrWOCOyEEHqMv29HNTT0VWLhLsNE%2FYVE9sn4GgjEXAjvYUsy8YJDqyusQDPQmC%2FBTae38Fcc9YxqD9aTtAWBN%2FRNa%2BSbIOCQFGuB16HNEqglyjYc5tsQBdfL03xgCNEHstG32Db9GLMN2lnLZd0yyNxdInbe2zZctF0vOcCoKwHksjFFA7YnU4mUpgbHoPPJ7RZ91SfaP%2BO6yA%2BOvsxzcFwpWJbgFxuBuE1hZ4DSckvJFAZceQNP5bwwzCvFKijKTy9w4gMumQPL7hK2HLOmK7TOlERhk5iyoDRgBboqARLnXsaaiJ%2BoildAOHjf9zw3kOAW%2FPe2pe%2Bd6zrGi1V%2B1kgiQkFe3CXsrpNDW6ciXDRX7cdKSHdLpfWjjgv1uLYmWsjMDwLvGrc6G6Lled2Ttq58s4NlFjqX4MkAcWbGjIPnndPGZkTyLB7%2FamitrT1Nlvk0FbwhD8MZAGsV61lCRXleCtZB8EEjvgLMK0JB2yWBm4MGStfpATeGPT76Y4OkNRpHZv%2FFFMFwFe3Meq9dRqWLPBg0Vd8GvWLyBzyRV%2BzbzQTaQNV3K1lnhnVaGQ4AjM4aSopPpsEXWWndwhT%2FHk8fgzCF7oCsBjqxARFY0vNQFOjmCEAZYPv4%2BU6dikRl8qWH9dtVDq7LGiAE%2BU1vjQ1RXoUmyad%2FX1nAqatm6oZje8NYNb2w92wGIjj2Ww5Ll%2FEKiQPsTdm6Eq1oG8uGoKOmmGDp7vfiBLZZKVTVJGLbumqHQTUjIh0H%2Feyg0l%2FArtWQ2pZbVygjSSHBiY3eXJCg39tv2QJU5yc0na90pCAvwS9s1CGBTHkPkZ2n9AZac8B4ftSTceuTQTizww%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20231218T123553Z&X-Amz-SignedHeaders=host&X-Amz-Credential=ASIAYS23FEFIW4PPJEEP%2F20231218%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Expires=600&X-Amz-Signature=a7bd15e32c5d8d05b66e758e992e8263af2f8d8161a364927a989c61e1c7584c",
+//         },
+//       },
+//       {
+//         id: 28,
+//         nodeType: "WEBHOOK",
+//         shape: {
+//           type: "Image",
+//           source:
+//             "https://static-up-assets.s3.eu-north-1.amazonaws.com/Threat%20Intel/webhook.png?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEEQaCmV1LW5vcnRoLTEiRzBFAiEAgiXHeyDYR3O6aTvcsa%2Be0RAZyTBsIGFACP16%2FnfjnMsCIDPqGCle3Qwi5u6dfSjv76nvivcptFvzwFi8UAF0t26CKsgFCL3%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNTkwMjEyMzA5MzI5Igzg6CNnMpiD8exwbx0qnAVVKz7arsp9WFoMxCF0TLohDelOkRmyzECbbRbdxlUTokCjV1ArqMsCdjbyi21wirV69V%2B6okfZrJUzyhpJmKZ54zCWd2MZ1VzsxXoBaVoAlFT7X7VWanx33INNIkSUj5sp3Y0dw8MTYipD277I%2FnsAwaLKortoCApoYhObDy9YrEVLSYG8s%2FYEfOR%2BO0%2BgQpQYS1AxW%2F5Y6nBFVszWot%2F2ONHc1PjC5Tx52Z4zJZVDC34K0MsICxZzRctMOhKxHUNnzs66Fw6cxfVuSxxxE8CYRWQR8REhayqGfrWOCOyEEHqMv29HNTT0VWLhLsNE%2FYVE9sn4GgjEXAjvYUsy8YJDqyusQDPQmC%2FBTae38Fcc9YxqD9aTtAWBN%2FRNa%2BSbIOCQFGuB16HNEqglyjYc5tsQBdfL03xgCNEHstG32Db9GLMN2lnLZd0yyNxdInbe2zZctF0vOcCoKwHksjFFA7YnU4mUpgbHoPPJ7RZ91SfaP%2BO6yA%2BOvsxzcFwpWJbgFxuBuE1hZ4DSckvJFAZceQNP5bwwzCvFKijKTy9w4gMumQPL7hK2HLOmK7TOlERhk5iyoDRgBboqARLnXsaaiJ%2BoildAOHjf9zw3kOAW%2FPe2pe%2Bd6zrGi1V%2B1kgiQkFe3CXsrpNDW6ciXDRX7cdKSHdLpfWjjgv1uLYmWsjMDwLvGrc6G6Lled2Ttq58s4NlFjqX4MkAcWbGjIPnndPGZkTyLB7%2FamitrT1Nlvk0FbwhD8MZAGsV61lCRXleCtZB8EEjvgLMK0JB2yWBm4MGStfpATeGPT76Y4OkNRpHZv%2FFFMFwFe3Meq9dRqWLPBg0Vd8GvWLyBzyRV%2BzbzQTaQNV3K1lnhnVaGQ4AjM4aSopPpsEXWWndwhT%2FHk8fgzCF7oCsBjqxARFY0vNQFOjmCEAZYPv4%2BU6dikRl8qWH9dtVDq7LGiAE%2BU1vjQ1RXoUmyad%2FX1nAqatm6oZje8NYNb2w92wGIjj2Ww5Ll%2FEKiQPsTdm6Eq1oG8uGoKOmmGDp7vfiBLZZKVTVJGLbumqHQTUjIh0H%2Feyg0l%2FArtWQ2pZbVygjSSHBiY3eXJCg39tv2QJU5yc0na90pCAvwS9s1CGBTHkPkZ2n9AZac8B4ftSTceuTQTizww%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20231218T123553Z&X-Amz-SignedHeaders=host&X-Amz-Credential=ASIAYS23FEFIW4PPJEEP%2F20231218%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Expires=600&X-Amz-Signature=f7ea1f8aab34b77ba24736f42532f9ed9df3be2f90406daafc208b040667620a",
+//         },
+//       },
+//     ],
+//   },
+// ];
 
-type BoxProps = { color?: "red" | "green" | "blue" };
+// const requiredArray = array.filter((item) => {
+//   return item.images.some((image) => image.nodeType === "ATTACK_PATTERN");
+// });
 
-const Box = ({ children, color = "red" }: PropsWithChildren<BoxProps>) => {
-  return (
-    <section
-      className="m-4"
-      style={{ padding: "1em", border: "5px solid purple", color }}
-    >
-      {children}
-    </section>
-  );
-};
+// let data = {
+//   id: requiredArray[0].id,
+//   catagory: requiredArray[0].category,
+//   images: requiredArray[0].images.filter(
+//     (item) => item.nodeType === "ATTACK_PATTERN"
+//   ),
+// };
 
-const Application = () => {
-  return (
-    <main className="m-8">
-      <Box color="green">
-        Just a string.
-        <p>Some HTML that is not nested.</p>
-        <Box>
-          <h2>Another React component with one child.</h2>
-        </Box>
-        <Box>
-          <h2 className="mb-4">A nested React component with two children.</h2>
-          <p>The second child.</p>
-        </Box>
-      </Box>
-    </main>
-  );
-};
+// console.log(data);
 
-export default Application;
+// // const requiredArray1 = requiredArray.filter((item) => {
+// //   return item.images.filter((image) => image.nodeType === "ATTACK_PATTERN");
+// // });

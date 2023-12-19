@@ -3,19 +3,17 @@ import config from "../course.json";
 const DEFAULT_CONFIG = {
   author: {
     name: "Prashant Rawal",
-    company: "An Author's Company",
+    company: "Tridhya Tech",
   },
-  title: "A Superb Course",
-  subtitle: "That Teaches Nice Things",
-  frontendMastersLink: "",
-  description: "A nice course for nice people.",
-  keywords: ["a nice course", "for people", "to learn", "nice things"],
+  title: "React With TypeScript v1",
+  subtitle: "Getting Started in React With TypeScript",
+  description: "A simple yet powerful guide for using react with typescript",
+  keywords: ["react", "Prashant Rawal", "TypeScript", "tridhya tech"],
   social: {
-    linkedin: "Prashant",
-    github: "Prashant",
-    twitter: "Prashant",
+    linkedin: "https://www.linkedin.com/in/prashant-rawal-12142b117",
+    github: "https://github.com/IAmCuriousDeveloper",
   },
-  productionBaseUrl: "/",
+  productionBaseUrl: "/React-with-TypeScript",
 };
 
 export default function getCourseConfig() {
