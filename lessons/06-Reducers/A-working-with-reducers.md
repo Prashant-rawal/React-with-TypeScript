@@ -38,8 +38,6 @@ Okay, enough of that. Let's write a real reducer.
 
 Let's talk about what happens when we don't take advantage of TypeScript in this situation. Shall we? I didn't even do this on purpose, but I wrote up a super simple implementation to get us ready for this section.
 
-You can find the code [here](https://codesandbox.io/s/8bbr8k), but I'll include some of it here too just for context. It's also available in on [the `use-reducer` branch for this application's repository](https://github.com/stevekinney/accident-counter/blob/use-reducer/src/components/counter.tsx).
-
 Here was my `reducer`:
 
 ```ts
