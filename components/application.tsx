@@ -4,7 +4,7 @@ import NameBadge from "./name-badge";
 
 const Application = () => (
   <main className="application">
-    <NameBadge name="Prashant" />
+    <NameBadge />
   </main>
 );
 
