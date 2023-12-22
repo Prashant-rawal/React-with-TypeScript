@@ -37,8 +37,6 @@ Let's break down that's happening:
   - The `| undefined` means that it _could_ be `undefined`, which meanes sense since it's optional.
 - This means, that the type is `React.ChangeEventHandler<HTMLInputElement>`.
 
-If you're curious what other event handles React includes, you can see a list of them in [here](React's%20built-in%20event%20handlers.md).
-
 ```tsx
 type ControlPanelProps = {
   name: string;

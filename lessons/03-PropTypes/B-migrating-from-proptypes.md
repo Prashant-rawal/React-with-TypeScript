@@ -112,5 +112,3 @@ export default NameBadge;
 ```
 
 It's convention to just take the name of your components and tack on -`Props` on to the end. You don't have to be overly creative.
-
-And with that, it's time to move on to [Refactoring from PropTypes, an exercise](Refactoring%20from%20PropTypes,%20an%20exercise.md).
