@@ -1,7 +1,7 @@
-<h1 align="center">next-course-starter</h1> <br>
+<h1 align="center">React with TypeScript</h1> <br>
 
 <p align="center">
-  A NextJS starter to get you started creating educational materials using Markdown
+  Lets have fun learning React with typeScript
 </p>
 
 ## Get Started
@@ -11,74 +11,6 @@
 1. Run `npm install`
 1. Run `npm run dev` to start the dev server
 1. Open http://localhost:3000 in a browser
-
-## Configure Your Course
-
-There are several things to configure before getting started.
-
-### course.json
-
-This json file allows you to configure the details of the site. Update the info here and it'll update it everywhere throughout the course website.
-
-- _author.name_ – Your name
-- _author.company_ – The company you work at or whatever you want as your subtitle. Optional.
-- _title_ – The title of your course
-- _subtitle_ – The subtitle of your course. Optional.
-- _social.linkedin_ - Your LinkedIn public user name, just the name, not the full link. Optional
-- _social.twitter_ – Your Twitter user name. Optional.
-- _social.github_ – Your GitHub user name. Optional.
-- _description_ – The description you want to show up in search engine results.
-- _keywords_ – The SEO keywords for this course. An array of strings
-- _productionBaseUrl_ – Typically useful for GitHub Pages. This adds a base path to your project. For GitHub Pages, this will be the name of your repo. For example, this site's base URL is `/next-course-starter` .
-- _csvPath_ – A CSV with the meta data for your lessons will be created at this path when you build or export the project. If you delete this config option it will not generate a CSV.
-
-### styles/variables.css
-
-Here is where you can theme your site. You can retheme the whole site with just these.
-
-### public/images
-
-Here is where you should stick all your images. Inside of your markdown, refer to images in this folder as `./images/<image file name>`.
-
-Note this site doesn't use `next/image` because that requires the server component.
-
-### public/images/author.jpg
-
-Your image. If you call it this, you won't have to change any code. If you need to change it, it's in `pages/index.js`.
-
-### public/images/social-share-cover.jpg
-
-The image that will be used if someone shares your website to Twitter/Facebook/etc. If you call it this, you won't have to change any code. If you do need to change it, it's in `pages/index.js`
-
-### public/images/course-icon.png
-
-The image at the top of the course. If you call it this, you won't have to change any code. If you do need to change it, it's in `pages/index.js`
-
-## Favicon
-
-Just replace the favicon\* files and the apple-touch-icon.png in the public/images directory. If you have a PNG, [favicon.io](https://favicon.io) will generate these files for you. If you don't want favicons, just remove the references to them in `pages/_app.js`.
-
-## Lessons
-
-All your markdown lesson files will go in `lessons/`. They **must** be organized an named this way:
-
-The folders must be named `01-section-one-name`, `02-section-two-name`, `03-section-three`, etc.
-
-The lessons are then grouped inside of these, the lessons are ordered by letters, `A-lesson-one.md`, `B-lesson-two.md`, `C-lesson-three.md`, etc.
-
-The titles of your lessons and sections are generated from the folder and lesson names (and can be overridden.) The first, organizing part of the name is stripped (the `01-` part of `01-section-one` and the `A-` part of `A-lesson-one`), the hyphens are turned into spaces (`section-one` becomes `section one`) and then those are run through [title-case](https://github.com/blakeembrey/change-case#titlecase) (so `section one` becomes `Section One`.) If you need to override these, use the frontmatter (explained below.)
-
-The folder and lesson names are also used for the slugs. `02-section-two/C-lesson-three.md` becomes `yoursite.com/lessons/section-two/lesson-three`.
-
-Each of these lessons can have a [frontmatter](https://github.com/jonschlinkert/gray-matter#readme) for the following properties
-
-- _title_ – If you want the title to be different from the file name, you can specify here what that title should be. Frequently this useful for things where the capitalization would be off e.g. TailwindCSS instead of Tailwindcss. Optional.
-- _description_ – If you want to give individual lessons descriptions for SEO . you can write a brief description here.
-- _keywords_ - If you want to give individual lessons keywords for SEO purposes, write a comma separated list
-
-🤖: now the course starter can auto-generate the description and keywords for you using ChatGPT. See below how to.
-
-Be aware because of how the numbers and letters are stripped out, it is possible to have ambigious paths. `01-welcome/A-intro.md` and `03-welcome/D-intro.md` would resolve to the same thing and only the first one would be visitable.
 
 ## meta.json
 
