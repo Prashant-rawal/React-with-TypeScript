@@ -61,7 +61,7 @@ The type is inferred as:
 const quote: undefined;
 ```
 
-Well, we're passing `undefined` to `useState`. If TypeScriptn was smart enough to assume that the number we passed to the `useState` in our counter example meant that `count` was a number, then the logic follows that `quote` is of the type `undefined.`
+Well, we're passing `undefined` to `useState`. If TypeScript was smart enough to assume that the number we passed to the `useState` in our counter example meant that `count` was a number, then the logic follows that `quote` is of the type `undefined.`
 
 ## Solving the problem
 

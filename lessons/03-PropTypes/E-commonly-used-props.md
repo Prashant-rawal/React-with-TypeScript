@@ -37,7 +37,7 @@ type GroceryListProps = {
 
 ## Objects
 
-It's not uncommon for us to find ourselves using objects in JavaScript (erm, TypeScript). So, what would that look like?
+It's not uncommon for us to find ourselves using objects in JavaScript (ummm, TypeScript). So, what would that look like?
 
 ```ts
 type ContrivedExampleComponmentProps = {

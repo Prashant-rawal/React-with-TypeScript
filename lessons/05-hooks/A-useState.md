@@ -4,6 +4,8 @@
 
 Let's quickly add some state to a simple little counter. For starters, this is basically the entire implementation.
 
+[you can follow along with me here](https://codesandbox.io/p/github/Prashant-rawal/accident-counter/main?file=%2Fsrc%2Fcomponents%2Fcounter.tsx%3A8%2C34&workspaceId=061a889c-7559-4eab-958f-5fa3d531165c)
+
 ```tsx
 const Counter = () => {
   return (
