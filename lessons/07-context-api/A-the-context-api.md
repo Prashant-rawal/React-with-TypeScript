@@ -76,7 +76,7 @@ const ColorContext = createContext({ state: initialState } as {
 });
 ```
 
-If this bother's you, we'll look at [a different—and arguably, better—way](createContext.md) to deal with this after we explore [generics](Generics.md) in a bit.
+<!-- If this bother's you, we'll look at [a different—and arguably, better—way](createContext.md) to deal with this after we explore [generics](Generics.md) in a bit. -->
 
 Now, we can go the rest of the way with the normal ceremony that we're used to.
 

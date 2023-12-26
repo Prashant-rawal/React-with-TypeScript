@@ -245,5 +245,3 @@ Additionally, if the action type expects a payload, TypeScript will ensure we do
 Using TypeScript does add _some_ additional work, but it also reduces—or maybe even—elimates the need for patters such as assigning action types to constants and action creators.
 
 You'll also noticed that I took care of coercing the potential string to a number in the reducer and I no longer need that `useEffect` that I apologized for in a previous section.
-
-You can see the end result [here](https://github.com/stevekinney/accident-counter/tree/use-reducer-refactored).
