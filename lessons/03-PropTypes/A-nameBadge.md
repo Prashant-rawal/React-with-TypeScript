@@ -6,6 +6,44 @@
 
 We're going to start off in [this codeSandbox repository](https://codesandbox.io/p/sandbox/namebadge-tp47tn?layout=%257B%2522sidebarPanel%2522%253A%2522EXPLORER%2522%252C%2522rootPanelGroup%2522%253A%257B%2522direction%2522%253A%2522horizontal%2522%252C%2522contentType%2522%253A%2522UNKNOWN%2522%252C%2522type%2522%253A%2522PANEL_GROUP%2522%252C%2522id%2522%253A%2522ROOT_LAYOUT%2522%252C%2522panels%2522%253A%255B%257B%2522type%2522%253A%2522PANEL_GROUP%2522%252C%2522contentType%2522%253A%2522UNKNOWN%2522%252C%2522direction%2522%253A%2522vertical%2522%252C%2522id%2522%253A%2522clqaoksbe0006356lwehtcfji%2522%252C%2522sizes%2522%253A%255B72.97723292469352%252C27.022767075306476%255D%252C%2522panels%2522%253A%255B%257B%2522type%2522%253A%2522PANEL_GROUP%2522%252C%2522contentType%2522%253A%2522EDITOR%2522%252C%2522direction%2522%253A%2522horizontal%2522%252C%2522id%2522%253A%2522EDITOR%2522%252C%2522panels%2522%253A%255B%257B%2522type%2522%253A%2522PANEL%2522%252C%2522contentType%2522%253A%2522EDITOR%2522%252C%2522id%2522%253A%2522clqaoksbd0002356lm7a4aaqi%2522%257D%255D%257D%252C%257B%2522type%2522%253A%2522PANEL_GROUP%2522%252C%2522contentType%2522%253A%2522SHELLS%2522%252C%2522direction%2522%253A%2522horizontal%2522%252C%2522id%2522%253A%2522SHELLS%2522%252C%2522panels%2522%253A%255B%257B%2522type%2522%253A%2522PANEL%2522%252C%2522contentType%2522%253A%2522SHELLS%2522%252C%2522id%2522%253A%2522clqaoksbd0003356lvmzz5ay6%2522%257D%255D%252C%2522sizes%2522%253A%255B100%255D%257D%255D%257D%252C%257B%2522type%2522%253A%2522PANEL_GROUP%2522%252C%2522contentType%2522%253A%2522DEVTOOLS%2522%252C%2522direction%2522%253A%2522vertical%2522%252C%2522id%2522%253A%2522DEVTOOLS%2522%252C%2522panels%2522%253A%255B%257B%2522type%2522%253A%2522PANEL%2522%252C%2522contentType%2522%253A%2522DEVTOOLS%2522%252C%2522id%2522%253A%2522clqaoksbd0005356l6tg7ebcq%2522%257D%255D%252C%2522sizes%2522%253A%255B100%255D%257D%255D%252C%2522sizes%2522%253A%255B50.77354018530489%252C49.22645981469511%255D%257D%252C%2522tabbedPanels%2522%253A%257B%2522clqaoksbd0002356lm7a4aaqi%2522%253A%257B%2522tabs%2522%253A%255B%257B%2522id%2522%253A%2522clqaoksbd0001356liuqlefa3%2522%252C%2522mode%2522%253A%2522permanent%2522%252C%2522type%2522%253A%2522FILE%2522%252C%2522filepath%2522%253A%2522%252Fpublic%252Findex.html%2522%252C%2522state%2522%253A%2522IDLE%2522%257D%255D%252C%2522id%2522%253A%2522clqaoksbd0002356lm7a4aaqi%2522%252C%2522activeTabId%2522%253A%2522clqaoksbd0001356liuqlefa3%2522%257D%252C%2522clqaoksbd0005356l6tg7ebcq%2522%253A%257B%2522tabs%2522%253A%255B%257B%2522id%2522%253A%2522clqaoksbd0004356liahlr3lc%2522%252C%2522mode%2522%253A%2522permanent%2522%252C%2522type%2522%253A%2522UNASSIGNED_PORT%2522%252C%2522port%2522%253A0%252C%2522path%2522%253A%2522%252F%2522%257D%255D%252C%2522id%2522%253A%2522clqaoksbd0005356l6tg7ebcq%2522%252C%2522activeTabId%2522%253A%2522clqaoksbd0004356liahlr3lc%2522%257D%252C%2522clqaoksbd0003356lvmzz5ay6%2522%253A%257B%2522tabs%2522%253A%255B%255D%252C%2522id%2522%253A%2522clqaoksbd0003356lvmzz5ay6%2522%257D%257D%252C%2522showDevtools%2522%253Atrue%252C%2522showShells%2522%253Atrue%252C%2522showSidebar%2522%253Atrue%252C%2522sidebarPanelSize%2522%253A15%257D) for the time being.
 
+## TypeScript Configuration
+
+## `compilerOptions`:
+
+- **target:** Specifies the ECMAScript target version for the compiled JavaScript. In this case, it's set to "es5," which means the generated JavaScript should be compatible with ECMAScript 5.
+
+- **lib:** Specifies a set of built-in TypeScript declaration files to include in the compilation. In this example, it includes declarations for the DOM, DOM Iterable, and ESNext.
+
+- **allowJs:** Allows the inclusion of JavaScript files in the TypeScript project.
+
+- **skipLibCheck:** Skips type checking of all the declaration files (.d.ts) in the project.
+
+- **esModuleInterop:** Enables compatibility with modules using CommonJS-style imports.
+
+- **allowSyntheticDefaultImports:** Allows default imports from modules with no default export.
+
+- **strict:** Enables all strict type-checking options. It's a shorthand for enabling a set of strict checks.
+
+- **forceConsistentCasingInFileNames:** Ensures that files included in the project have consistent casing of their names.
+
+- **noFallthroughCasesInSwitch:** Reports errors for fallthrough cases in switch statements.
+
+- **module:** Specifies the module system for the generated code. In this case, it's set to "esnext," indicating ECMAScript modules.
+
+- **moduleResolution:** Specifies how module names are resolved. It's set to "node," which means the Node.js module resolution strategy.
+
+- **resolveJsonModule:** Enables importing JSON files as modules.
+
+- **isolatedModules:** Disallows files from being transpiled separately. Each file is treated as a separate module.
+
+- **noEmit:** Prevents TypeScript from emitting output files (JavaScript files). This is useful when you only want to perform type-checking without generating the actual JavaScript code.
+
+- **jsx:** Specifies the JSX factory function to use when targeting React JSX emit. In this case, it's set to "react-jsx."
+
+## `include`:
+
+- Specifies the files or patterns to include in the compilation. In this case, it includes all files under the "src" directory.
+
 Alright, let's start simple here and play a fun game: Is the component below written in JavaScript or TypeScript?
 
 ```tsx
